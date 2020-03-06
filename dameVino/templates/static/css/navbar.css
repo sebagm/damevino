@@ -1,5 +1,5 @@
 .header{
-    background: url(./img/cabecera.png) repeat;
+    background: url(../img/cabecera.png) repeat;
     background-size: contain;
     min-height: 35vh;
 }
