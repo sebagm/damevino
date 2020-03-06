@@ -9,10 +9,11 @@
         <div class="row align-items-center">
           <div class="col">	
           <h1 style="font-family: 'Pacifico'">¿Qué es DameVino?</h1>
-          <p class="lead">DameVino es un recomendador de vinos online que te sugiere 5 vinos nacionales según las distintas características escogidas y el plato con el que lo quieras acompañar.</p>
+          <p class="lead">DameVino es un recomendador de vinos online que te sugiere 5 vinos nacionales según las distintas características escogidas y el plato con el que lo quieras acompañar. También puedes elegir tú mismo el vino que desees en nuestra vinoteca.</p>
         </div>
         <div class="col col-xl-5">
-            <img src="./img/queEs.gif" width="400" height="350" class="d-inline-block align-bottom" alt="">
+            {% load static %}
+            <img src="{% static 'img/queEs.gif' %}" width="400" height="350" class="d-inline-block align-bottom" alt="">
         </div>	
       </div>    
     </div>
@@ -22,16 +23,18 @@
         <div class="row">
             <div class="col" style="margin: auto;">
                 <h1 style="font-family: 'Pacifico'">¿Cómo funciona?</h1>
-              <img src="./img/ensalada.svg" width="250" height="250" class="d-inline-block align-bottom" alt="" style="margin-left: 6.5em;">
-              <h3>Dinos qué vas a comer, y te sugeriremos 5 vinos distintos</h3>
-              <p class="lead">DameVino es un recomendador de vinos online que te sugiere 5 vinos nacionales según las distintas características escogidas y el plato con el que lo quieras acompañar.</p>
-              <button type="button" class="btn boton">Recomendador</button>
+                {% load static %}
+                <img src="{% static 'img/ensalada.svg' %}" width="250" height="250" class="d-inline-block align-bottom" alt="" style="margin-left: 6.5em;">
+                <h3>Dinos qué vas a comer, y te sugeriremos 5 vinos distintos</h3>
+                <p class="lead">Dinos el maridaje con el que quieres acompañar el vino, elige las distintas características que desea que tenga y espera a que nuestro recomendador haga la magia.</p>
+                <a role="button" class="btn boton" href="{% url 'recomendador' %}">Recomendador</a>
           </div>
           <div class="col">
-              <img src="./img/botella_copa.svg" width="250" height="250" class="d-inline-block align-bottom" alt="" style="margin-top: 3em; margin-bottom: 2em; margin-left: 6.5em;">
+              {% load static %}
+              <img src="{% static 'img/botella_copa.svg' %}" width="250" height="250" class="d-inline-block align-bottom" alt="" style="margin-top: 3em; margin-bottom: 2em; margin-left: 6.5em;">
               <h3>O puedes buscar tú el vino directamente</h3>
               <p class="lead">Tenemos una vinoteca con más de 150 referencias donde podrás buscar vinos por tipo de vino, D.O., puntuación, maridaje, etc. y descubrir nuestra selección en cada caso.</p>
-              <button type="button" class="btn boton">Ir a la vinoteca</button>
+              <a role="button" class="btn boton" href="{% url 'vinoteca' %}">Ir a la vinoteca</a>
           </div>
       </div>
     </div>  
