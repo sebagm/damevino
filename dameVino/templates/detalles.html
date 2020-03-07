@@ -4,6 +4,32 @@
 
 {% block content %}
 
+<div class="container-fluid" style="background-color: #a1ded6;">
+    <div class="row">
+        <div class="col" style="margin-left: 14em; margin-top: 2em;">
+            <div class="card" style="width: 18em;">
+                <img class="card-img" src="{% static 'img/botella_copa.svg' %}" width="250" height="250" alt="Card image cap">
+            </div>
+        </div>
 
+        <div class="col">
+            <div class="card-body">
+                <h3 class="card-title">Nombre vino</h3>
+                <p class="card-text"><span class="badge badge-pill badge-dark">Tipo vino: </span>quick example text</p>
+                <p class="card-text"><span class="badge badge-pill badge-dark">Añada: </span>quick example text</p>
+                <p class="card-text"><span class="badge badge-pill badge-dark">Denominación: </span>quick example text</p>
+            </div>
+        </div>
+        
+        <div class="col">
+            <div class="card-body">
+                <p class="card-text"><span class="badge badge-pill badge-dark">Bodega: </span>quick example text</p>
+                <p class="card-text"><span class="badge badge-pill badge-dark">Puntuación: </span>quick example text</p>
+                <p class="card-text"><span class="badge badge-pill badge-dark">Maridaje: </span>quick example text</p>
+            </div>
+            <a href="#" class="btn btn-primary">Comprar</a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
