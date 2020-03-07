@@ -22,13 +22,18 @@
     background-color: #ffffff;
     margin-bottom: 5px;
 }
+.logo{
+    font-size: 1.8em; 
+    font-family: 'Pacifico'; 
+    color: #762933;
+}
 .nav-link{
     color: #762933;
     font-size: 1.2em;
     font-weight: bold;
     font-family: 'Acme', sans-serif;
     margin-right: 20px;
-        margin-left: 20px;
+    margin-left: 20px;
     padding: 0;
 }
 .nav-link:hover {
@@ -65,4 +70,15 @@
 .boton:hover, .boton:active{
     color: #FFFFFF;
     background-color: #762933;
+}
+
+.opcionesRV{
+    color: #762933;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: 2px solid #762933; 
+    background-color: transparent;
+    width: 120px;
+    height: 120px;
 }
