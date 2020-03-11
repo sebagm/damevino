@@ -12,7 +12,7 @@ function enviar(){
             if(regex.test(correo)){
                 if(msg != ""){
                     $("#contenedor").html("<p class='d-flex justify-content-center'><b>Tu mensaje ha sido enviado correctamente</b></p>")
-                    $("#contenedor").append("<div class='col d-flex justify-content-center'><a class='btn boton mt-4' href='{% url 'inicio' %}' style='margin-right: 5px; alig'><b>DameVino</b></a><a class='btn boton mt-4' href='{% url 'contacto' %}' style='margin-left: 5px'><b>Contacto</b></a></div>")
+                    $("#contenedor").append("<div class='col d-flex justify-content-center'><a class='btn boton mt-4' href=\"/inicio/\" style='margin-right: 5px; alig'><b>DameVino</b></a><a class='btn boton mt-4' href=\"/contacto/\" style='margin-left: 5px'><b>Contacto</b></a></div>")
                 }
                 else
                     $("#group3").append("<p id='advertencia' style='color: #762933'><b>Este campo no puede estar vacío</b></p>")
