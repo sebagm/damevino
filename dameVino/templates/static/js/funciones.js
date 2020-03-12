@@ -40,12 +40,12 @@ function eslogan(){
         document.write("Contacto");
 }
 
-// Variables globalles que contendrán las opciones escogidas por el usuario
-var tipoV, tipoD, tipoE, tipoM, tipoG, tipoT, tipoC;
+// Variables globales que contendrán las opciones escogidas por el usuario
+var tipoV, tipoD, tipoE, tipoM, tipoG, tipoT, tipoC, fin;
 
 // Función  que inicia el formulario dinámico
 function inicioRecomendador(){
-    $("#contenedorRV").html("<div id='colRV' class='col d-flex justify-content-center'></div");
+    fin = false;
     tipoVino();
 }
 
@@ -53,6 +53,9 @@ function inicioRecomendador(){
 function tipoVino(){
     tVino = new Array("Tinto", "Blanco", "Rosado", "Espumoso", "Generoso", "Dulce");
     
+    $("#colRV button").remove();
+    $("#contenedorRVenviar button").remove();
+
     for(var i=0; i<tVino.length; i++)
         $("#colRV").append("<button id='"+tVino[i]+"' class='btn opcionesRV' onclick = tipoVid(this);>"+tVino[i]+"</button>");
 }
@@ -60,14 +63,18 @@ function tipoVino(){
 // Función para obtener el id de la opción escogida por el usuario
 function tipoVid(comp){
     tipoV = "Tipo de vino: " + comp.id;
-    document.getElementById('c1').innerHTML = tipoV;
-    tipoDenominacion();
+
+    if(fin == false)
+        tipoDenominacion();
+    else
+        resumen();
 }
 
 function tipoDenominacion(){
     tDenominacion = new Array("La Rioja", "Ribera del Duero", "Somontano", "Toro", "Manchuela", "Rueda", "Jerez-Xérès-Sherry", "Rías Baixas", "Calatayud", "Corpinnat", "Bierzo", "Campo de Borja", "Yecla", "Montsant", "Empordá", "Montilla-Moriles", "Priorat", "Tres Riberas", "Ribeira Sacra", "Cava", "Alicante", "Jumilla", "Madrid", "Navarra", "Valencia", "Sierras de Málaga", "Manzanilla Sanlúcar de Barrameda", "VT Cádiz", "VT Castilla y León", "VT El Terrerazo", "VT Extremadura", "VT Mallorca");
     
     $("#colRV button").remove();
+    $("#contenedorRVenviar button").remove();
 
     for(var i=0; i<tDenominacion.length; i++)
         $("#colRV").append("<button id='"+tDenominacion[i]+"' class='btn opcionesRV' onclick = tipoDid(this);>"+tDenominacion[i]+"</button>");
@@ -75,14 +82,18 @@ function tipoDenominacion(){
 
 function tipoDid(comp){
     tipoD = "Denominación: " + comp.id;
-    document.getElementById('c2').innerHTML = tipoD;
-    tipoEdad();
+    
+    if(fin == false)
+        tipoEdad();
+    else
+        resumen();
 }
 
 function tipoEdad(){
     tEdad = new Array("Joven", "Viejo");
 
     $("#colRV button").remove();
+    $("#contenedorRVenviar button").remove();
 
     for(var i=0; i<tEdad.length; i++)
         $("#colRV").append("<button id='"+tEdad[i]+"' class='btn opcionesRV' onclick = tipoEid(this);>"+tEdad[i]+"</button>");
@@ -90,14 +101,18 @@ function tipoEdad(){
 
 function tipoEid(comp){
     tipoE = "Edad: " + comp.id;
-    document.getElementById('c3').innerHTML = tipoE;
-    tipoMaridaje();
+    
+    if(fin == false)
+        tipoMaridaje();
+    else
+        resumen();
 }
 
 function tipoMaridaje(){
     tMaridaje = new Array("Carne", "Ensalada", "Pescado", "Postres", "Pasta", "Queso", "Embutidos", "Platos de cuchara", "Verduras, legumbres y hortalizas", "Patatas", "Cocina española", "Cocina mediterránea", "Cocina vegetariana", "Cocina china", "Cocina italiana", "Cocina japonesa", "Cocina india", "Setas", "Frutas", "Arroz", "Aperitivos", "Marisco", "Huevos", "Platos combinados", "Tapas");
 
     $("#colRV button").remove();
+    $("#contenedorRVenviar button").remove();
 
     for(var i=0; i<tMaridaje.length; i++)
         $("#colRV").append("<button id='"+tMaridaje[i]+"' class='btn opcionesRV' onclick = tipoMid(this);>"+tMaridaje[i]+"</button>");
@@ -105,14 +120,18 @@ function tipoMaridaje(){
 
 function tipoMid(comp){
     tipoM = "Maridaje: " + comp.id;
-    document.getElementById('c4').innerHTML = tipoM;
-    tipoGusto();
+    
+    if(fin == false)
+        tipoGusto();
+    else
+        resumen();
 }
 
 function tipoGusto(){
     tGusto = new Array("Afrutado", "Floral", "Vegetal", "Seco", "Semiseco", "Dulce");
 
     $("#colRV button").remove();
+    $("#contenedorRVenviar button").remove();
 
     for(var i=0; i<tGusto.length; i++)
         $("#colRV").append("<button id='"+tGusto[i]+"' class='btn opcionesRV' onclick = tipoGid(this);>"+tGusto[i]+"</button>");
@@ -120,14 +139,18 @@ function tipoGusto(){
 
 function tipoGid(comp){
     tipoG = "Gusto: " + comp.id;
-    document.getElementById('c5').innerHTML = tipoG;
-    tipoTextura();
+    
+    if(fin == false)
+        tipoTextura();
+    else
+        resumen();
 }
 
 function tipoTextura(){
     tTextura = new Array("Suave", "Áspero", "Agrio", "Fresco", "Pesado", "Astringente", "Aterciopelado");
 
     $("#colRV button").remove();
+    $("#contenedorRVenviar button").remove();
 
     for(var i=0; i<tTextura.length; i++)
         $("#colRV").append("<button id='"+tTextura[i]+"' class='btn opcionesRV' onclick = tipoTid(this);>"+tTextura[i]+"</button>");
@@ -135,14 +158,18 @@ function tipoTextura(){
 
 function tipoTid(comp){
     tipoT = "Textura: " + comp.id;
-    document.getElementById('c6').innerHTML = tipoT;
-    tipoCuerpo();
+    
+    if(fin == false)
+        tipoCuerpo();
+    else
+        resumen();
 }
 
 function tipoCuerpo(){
     tCuerpo = new Array("Ligero", "Medio", "Pleno");
 
     $("#colRV button").remove();
+    $("#contenedorRVenviar button").remove();
 
     for(var i=0; i<tCuerpo.length; i++)
         $("#colRV").append("<button id='"+tCuerpo[i]+"' class='btn opcionesRV' onclick = tipoCid(this);>"+tCuerpo[i]+"</button>");
@@ -150,11 +177,19 @@ function tipoCuerpo(){
 
 function tipoCid(comp){
     tipoC = "Cuerpo: " + comp.id;
-    document.getElementById('c7').innerHTML = tipoC;
-    fin();
+    fin = true;
+    resumen();
 }
 
-function fin(){
+function resumen(){
     $("#colRV button").remove();
-    $("#colRV").append("<h1>Se acabó el formulario</h1>");
+    
+    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoVino();>"+tipoV+"</button>");
+    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoDenominacion();>"+tipoD+"</button>");
+    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoEdad();>"+tipoE+"</button>");
+    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoMaridaje();>"+tipoM+"</button>");
+    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoGusto();>"+tipoG+"</button>");
+    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoTextura();>"+tipoT+"</button>");
+    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoCuerpo();>"+tipoC+"</button>");
+    $("#contenedorRVenviar").append("<button class='btn boton'>Recomendar</button>")
 }

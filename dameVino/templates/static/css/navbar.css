@@ -66,6 +66,7 @@
     -webkit-border-radius: 10px;
     border: 2px solid #762933; 
     background-color: transparent;
+    font-weight: bold;
 }
 .boton:hover, .boton:active{
     color: #FFFFFF;
@@ -78,7 +79,13 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border: 2px solid #762933; 
-    background-color: transparent;
-    width: 120px;
-    height: 120px;
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    font-weight: bold;
+}
+
+.opcionesRV:hover, .opcionesRV:active{
+    color: #FFFFFF;
+    background-color: #762933;
 }
