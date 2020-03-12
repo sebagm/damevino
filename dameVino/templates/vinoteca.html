@@ -5,5 +5,53 @@
 
 {% block content %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <h3>Puntuación</h3>
+                <div class="list-group-item">
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                        <p>Value: <span id="demo"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="list-group">
+                <h3>Tipo de Vino</h3>
+                <div class="brandSection">
+                    <div class="list-group-item checkbox">
+                        <label><input type="checkbox" class="productDetail brand" value="brandTest" > Tinto</label>
+                    </div>
+                </div>
+            </div>
+            <div class="list-group">
+                <h3>Denominación</h3>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail ram" value="ramTest" > Rioja</label>
+                </div>
+            </div>
+            <div class="list-group">
+                <h3>Añada</h3>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail storage" value="internalStorageTest" > 2009</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row searchResult"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+    output.innerHTML = this.value;
+    }
+</script>
 
 {% endblock %}
