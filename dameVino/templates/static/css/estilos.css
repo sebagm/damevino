@@ -91,10 +91,16 @@
     background-color: #762933;
 }
 
-#tituloR, #tituloR2{
+#tituloR, #tituloR2, #tituloC, #tituloD{
     font-family: 'Acme', sans-serif;
     text-align: center;
 }
+
+#colRV, #colC, #colD{
+    border-radius: 10px;
+    box-shadow: 0 0 7px 0 black;
+}
+
 /*
 ==========================FUNCIONES VINOTECA=============================================
 */

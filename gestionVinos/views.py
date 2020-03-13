@@ -7,7 +7,7 @@ def inicio(request):
     return render(request, "inicio.html")
 
 def recomendador(request):
-    rec = False;
+    rec = False
     return render(request, "recomendador.html", {"rec":rec})
 
 def vinoteca(request):
@@ -20,6 +20,6 @@ def contacto(request):
     return render(request, "contacto.html")
 
 def formRecomendador(request):
-    rec = True;
+    rec = True
     tV = request.GET["Vino"]
     return render(request, "recomendador.html", {"rec":rec, "vino":tV})

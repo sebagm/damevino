@@ -5,30 +5,35 @@
 
 {% block content %}
 
-<div class="container-fluid" style="background-color: #a1ded6;">
-    <div class="row">
-        <div class="col" style="margin-left: 14em; margin-top: 2em;">
-            <div class="card" style="width: 18em;">
-                <img class="card-img" src="{% static 'img/botella_copa.svg' %}" width="250" height="250" alt="Card image cap">
-            </div>
+<div class="container-fluid px-5 py-5" style="background-color: white;">
+    <div id="colD" class="row py-5" style="background-color: #a1ded6;">
+        <div class="col-12 col-lg-5 d-flex justify-content-center">
+            <img class="img-fluid img-thumbnail" src="{% static 'img/tomevinos.jpg' %}" style="max-width: 300px; max-height: 300px;">
         </div>
-
-        <div class="col">
-            <div class="card-body">
-                <h3 class="card-title">Nombre vino</h3>
-                <p class="card-text"><span class="badge badge-pill badge-dark">Tipo vino: </span>quick example text</p>
-                <p class="card-text"><span class="badge badge-pill badge-dark">Añada: </span>quick example text</p>
-                <p class="card-text"><span class="badge badge-pill badge-dark">Denominación: </span>quick example text</p>
+        <div class="col-12 col-lg-7">
+            <div class="row justify-content-center">
+                <h1 id="tituloD">Nombre vino</h1>
             </div>
-        </div>
-        
-        <div class="col">
-            <div class="card-body">
-                <p class="card-text"><span class="badge badge-pill badge-dark">Bodega: </span>quick example text</p>
-                <p class="card-text"><span class="badge badge-pill badge-dark">Puntuación: </span>quick example text</p>
-                <p class="card-text"><span class="badge badge-pill badge-dark">Maridaje: </span>quick example text</p>
+            <div class="row justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="card-body">
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Tipo vino: </span>quick example text</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Añada: </span>quick example text</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Denominación: </span>quick example text</p>
+                        
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="card-body">
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Bodega: </span>quick example text</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Puntuación: </span>quick example text</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Maridaje: </span>quick example text</p>
+                    </div>
+                </div>
             </div>
-            <a href="#" class="btn btn-primary">Comprar</a>
+            <div class="row justify-content-center pt-4">
+                <a href="#" class="btn boton" style="width: 25%;">Comprar</a>
+            </div>
         </div>
     </div>
 </div>

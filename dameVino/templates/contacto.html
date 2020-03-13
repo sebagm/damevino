@@ -4,15 +4,11 @@
 
 {% block content %}
 
-<div id="contenedor" class="jumbotron my-0" style="background-color: #a1ded6;">
-    <div class="row justify-content-center mb-2">
-        <div class="col-xl-6 col-xs-8">
-            <h2 class="d-flex justify-content-center mb-4" style="font-family: 'Acme', sans-serif; font-size: 3em;">Tu opinión nos importa</h2>
-            <p class="d-flex justify-content-center" style="font-size: large;">Escríbenos y dinos qué plato te gustaría añadir, qué te parece dameVino o cualquier cosa que quieras contarnos, ¡estaremos encantados de leerte!</p>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-xs-10">
+<div id="contenedor" class="container-fluid px-5 pt-5 pb-4" style="background-color: white;">
+    <div id="colC" class="row justify-content-center py-4" style="background-color: #a1ded6;">
+        <div class="col-lg-8 col-xs-10">
+            <h2 id="tituloC" style="font-size: 3em;">Tu opinión nos importa</h2>
+            <p style="font-size: large; text-align: center;">Escríbenos y dinos qué plato te gustaría añadir, qué te parece dameVino o cualquier cosa que quieras contarnos, ¡estaremos encantados de leerte!</p>
             <div id="group1" class="form-group">
                 <label for="nom"><b>Nombre</b></label>
                 <input type="text" id="nom" name="nom" class="form-control" style="border-color: #762933">
@@ -25,10 +21,10 @@
                 <label for="mensaje"><b>Tu mensaje</b></label>
                 <textarea id="mensaje" name="mensaje" class="form-control" rows="5" style='border-color: #762933'></textarea>
             </div>
-            <div class="d-flex justify-content-center mt-4">
-                <button class="btn boton" onclick = enviar() style="width: 25%;"><b>Enviar</b></button>
-            </div>  
         </div>
+    </div>
+    <div class="row justify-content-center pt-4">
+        <button class="btn boton" onclick = enviar() style="width: 20%;"><b>Enviar</b></button>
     </div>
 </div>
 {% endblock %}
