@@ -5,41 +5,117 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
+<div class="container-fluid px-5 py-5" >
+    <div id="colD" class="row py-5" style="background-color: #a1ded6;">
         <div class="col-md-3">
             <div class="list-group">
-                <h3>Puntuación</h3>
-                <div class="list-group-item">
-                    <div class="slidecontainer">
-                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                        <p>Value: <span id="demo"></span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="list-group">
                 <h3>Tipo de Vino</h3>
-                <div class="brandSection">
-                    <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="productDetail brand" value="brandTest" > Tinto</label>
-                    </div>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail tipo" value="tinto" >Tinto</label>
+                </div>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail tipo" value="blanco" >Blanco</label>
+                </div>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail tipo" value="rosado" >Rosado</label>
+                </div>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail tipo" value="espumoso" >Espumoso</label>
                 </div>
             </div>
             <div class="list-group">
                 <h3>Denominación</h3>
                 <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail ram" value="ramTest" > Rioja</label>
+                    <label><input type="checkbox" class="productDetail do" value="rioja" >Rioja</label>
+                </div>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail do" value="ribera" >Ribera del Duero</label>
+                </div>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail do" value="condado" >Condado</label>
                 </div>
             </div>
             <div class="list-group">
-                <h3>Añada</h3>
+                <h3>Maridaje</h3>
                 <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail storage" value="internalStorageTest" > 2009</label>
+                    <label><input type="checkbox" class="productDetail marid" value="carne" >Carne</label>
+                </div>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail marid" value="pescado" >Pescado</label>
+                </div>
+                <div class="list-group-item checkbox">
+                    <label><input type="checkbox" class="productDetail marid" value="pasta" >Pasta</label>
+                </div>
+            </div>
+            <div class="list-group">
+                <h3>Puntuación</h3>
+                <div class="list-group-item">
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                        <p>Puntos: <span id="demo"></span></p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-9">
-            <div class="row searchResult"></div>
+            <div class="card mb-3 results" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static 'img/botella_copa.svg' %}" width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Vino Ejemplo</h5>
+                            <p class="card-text">Tipo:</p>
+                            <p class="card-text"><small class="text-muted">D.O:</small></p>
+                            <br/>
+                            <input type="button" value="Ver vino"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static 'img/botella_copa.svg' %}" width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Vino Ejemplo</h5>
+                            <p class="card-text">Tipo:</p>
+                            <p class="card-text"><small class="text-muted">D.O:</small></p>
+                            <br/>
+                            <input type="button" value="Ver vino"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static 'img/botella_copa.svg' %}" width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Vino Ejemplo</h5>
+                            <p class="card-text">Tipo:</p>
+                            <p class="card-text"><small class="text-muted">D.O:</small></p>
+                            <br/>
+                            <input type="button" value="Ver vino"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static 'img/botella_copa.svg' %}" width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Vino Ejemplo</h5>
+                            <p class="card-text">Tipo:</p>
+                            <p class="card-text"><small class="text-muted">D.O:</small></p>
+                            <br/>
+                            <input type="button" value="Ver vino"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -49,8 +125,9 @@
     var output = document.getElementById("demo");
     output.innerHTML = slider.value;
 
-    slider.oninput = function() {
-    output.innerHTML = this.value;
+    slider.oninput = function()
+    {
+        output.innerHTML = this.value;
     }
 </script>
 

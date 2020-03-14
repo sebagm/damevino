@@ -1,4 +1,2 @@
-*.jpg
 *.pyc
 .idea
-db.sqlite3
