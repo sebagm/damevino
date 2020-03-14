@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from gestionVinos.models import Vinos
 
 # Create your views here.
 
@@ -11,7 +12,10 @@ def recomendador(request):
     return render(request, "recomendador.html", {"rec":rec})
 
 def vinoteca(request):
-    return render(request, "vinoteca.html")
+
+    vinos = Vinos.objects.all()
+
+    return render(request, "vinoteca.html", {"vinos":vinos})
 
 def detalles(request):
     return render(request, "detalles.html")

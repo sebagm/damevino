@@ -5,13 +5,27 @@
 
 {% block content %}
 
+<script>
+    $(document).ready(function()
+    {
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function()
+        {
+            output.innerHTML = this.value;
+        }
+    });
+</script>
+
 <div class="container-fluid px-5 py-5" >
     <div id="colD" class="row py-5" style="background-color: #a1ded6;">
         <div class="col-md-3">
             <div class="list-group">
                 <h3>Tipo de Vino</h3>
                 <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail tipo" value="tinto" >Tinto</label>
+                    <label><input type="checkbox" class="productDetail tipo" value="tinto" id="estoEsTinto" onclick="checa()">Tinto</label>
                 </div>
                 <div class="list-group-item checkbox">
                     <label><input type="checkbox" class="productDetail tipo" value="blanco" >Blanco</label>
@@ -57,78 +71,33 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
+
+        <div class="col-md-9" id="grupoVinos">
             <div class="card mb-3 results" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="{% static 'img/botella_copa.svg' %}" width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Vino Ejemplo</h5>
-                            <p class="card-text">Tipo:</p>
-                            <p class="card-text"><small class="text-muted">D.O:</small></p>
-                            <br/>
-                            <input type="button" value="Ver vino"/>
+                {% if vinos %}
+                    {% for vino in vinos %}
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src={{vino.img}} width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{vino.nombre}}</h5>
+                                    <p class="card-text">Tipo: {{vino.tipo}}</p>
+                                    <p class="card-text"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>
+                                    <br/>
+                                    <input type="button" value="Ver vino"/>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="{% static 'img/botella_copa.svg' %}" width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Vino Ejemplo</h5>
-                            <p class="card-text">Tipo:</p>
-                            <p class="card-text"><small class="text-muted">D.O:</small></p>
-                            <br/>
-                            <input type="button" value="Ver vino"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="{% static 'img/botella_copa.svg' %}" width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Vino Ejemplo</h5>
-                            <p class="card-text">Tipo:</p>
-                            <p class="card-text"><small class="text-muted">D.O:</small></p>
-                            <br/>
-                            <input type="button" value="Ver vino"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="{% static 'img/botella_copa.svg' %}" width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Vino Ejemplo</h5>
-                            <p class="card-text">Tipo:</p>
-                            <p class="card-text"><small class="text-muted">D.O:</small></p>
-                            <br/>
-                            <input type="button" value="Ver vino"/>
-                        </div>
-                    </div>
-                </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
+
+
+
     </div>
 </div>
-
-<script>
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function()
-    {
-        output.innerHTML = this.value;
-    }
-</script>
 
 {% endblock %}
