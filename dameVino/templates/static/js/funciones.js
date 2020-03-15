@@ -220,8 +220,7 @@ function resumen(){
 //=========================================FUNCIONES VINOTECA=========================================
 //====================================================================================================
 
-function checa()
-{
+function checa(){
     var checkBox = document.getElementById("estoEsTinto");
     if(checkBox.checked == true)
     {

@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from gestionVinos.views import inicio, recomendador, vinoteca, detalles, contacto, formRecomendador
+from gestionVinos.views import inicio, recomendador, vinoteca, detalles, contacto, formRecomendador, filtroVinoteca
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('inicio/', inicio, name="inicio"),
     path('recomendador/', recomendador, name="recomendador"),
     path('vinoteca/', vinoteca, name="vinoteca"),
-    path('detalles/', detalles, name="detalles"),
+    path('detalles/<int:idVino>/', detalles, name="detalles"),
     path('contacto/', contacto, name="contacto"),
     path('formRecomendador/', formRecomendador, name="formRecomendador"),
+    path('filtroVinoteca/', filtroVinoteca, name="filtroVinoteca"),
 ]

@@ -8,26 +8,26 @@
 <div class="container-fluid px-5 py-5" style="background-color: white;">
     <div id="colD" class="row py-5" style="background-color: #a1ded6;">
         <div class="col-12 col-lg-5 d-flex justify-content-center">
-            <img class="img-fluid img-thumbnail" src="{% static 'img/tomevinos.jpg' %}" style="max-width: 300px; max-height: 300px;">
+            <img class="img-fluid img-thumbnail" src="{{v.img}}">
         </div>
         <div class="col-12 col-lg-7">
             <div class="row justify-content-center">
-                <h1 id="tituloD">Nombre vino</h1>
+                <h1 id="tituloD">{{v.nombre}}</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="card-body">
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Tipo vino: </span>quick example text</p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Añada: </span>quick example text</p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Denominación: </span>quick example text</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Tipo vino: </span>{{v.tipo}}</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Añada: </span>{{v.anada}}</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Denominación: </span>{{v.denominacion}}</p>
                         
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
                     <div class="card-body">
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Bodega: </span>quick example text</p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Puntuación: </span>quick example text</p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Maridaje: </span>quick example text</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Bodega: </span>{{v.bodega}}</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Puntuación: </span>{{v.puntos}}</p>
+                        <p class="card-text"><span class="badge badge-pill badge-dark">Maridaje: </span>{{v.maridaje}}</p>
                     </div>
                 </div>
             </div>
