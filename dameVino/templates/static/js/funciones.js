@@ -220,13 +220,34 @@ function resumen(){
 //=========================================FUNCIONES VINOTECA=========================================
 //====================================================================================================
 
-function checa()
+function checa(tintos)
 {
     var checkBox = document.getElementById("estoEsTinto");
     if(checkBox.checked == true)
     {
-        $("#grupoVinos").remove();
+        $("#grupoVinos div").remove();
         //vinos = Vinos.objects.filter(tipo__icontains="Vino tinto");
-        //$("#grupoVinos").append('<div class="col-md-9" id="grupoVinos"><div class="card mb-3 results" style="max-width: 540px;">{% if vinos %}{% for vino in vinos %}<div class="row no-gutters"><div class="col-md-4"><img src={{vino.img}} width="200" height="200" style="margin: 1em;" class="card-img" alt="..."></div><div class="col-md-8"><div class="card-body"><h5 class="card-title">{{vino.nombre}}</h5><p class="card-text">Tipo: {{vino.tipo}}</p><p class="card-text"><small class="text-muted">D.O: {{vino.denominacion}}</small></p><br/><input type="button" value="Ver vino"/></div></div></div>{% endfor %}{% endif %}</div></div>')
+        cadena = '<div class="card mb-3 results" style="max-width: 540px;">'+
+                    '{% if "tintos" %}'+
+                        '{% for vino in "tintos" %}'+
+                            '<div class="row no-gutters">'+
+                                '<div class="col-md-4">'+
+                                    '<img src={{vino.img}} width="200" height="200" style="margin: 1em;" class="card-img" alt="...">'+
+                                '</div>'+
+                                '<div class="col-md-8">'+
+                                    '<div class="card-body">'+
+                                        '<h5 class="card-title">{{vino.nombre}}</h5>'+
+                                        '<p class="card-text">Tipo: {{vino.tipo}}</p>'+
+                                        '<p class="card-text"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>'+
+                                        '<br/>'+
+                                        '<input type="button" value="Ver vino"/>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '{% endfor %}'+
+                    '{% endif %}'+
+                '</div>';
+
+        $("#grupoVinos").html(cadena);
     }
 }
