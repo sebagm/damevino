@@ -27,3 +27,9 @@ def formRecomendador(request):
     rec = True
     tV = request.GET["Vino"]
     return render(request, "recomendador.html", {"rec":rec, "vino":tV})
+
+def vinotecaFiltro(request):
+    filtro = request.GET.get('filtro')
+    vinos = Vinos.objects.filter(tipo=filtro)
+
+    return render(request, "vinoteca.html", {"vinos":vinos})

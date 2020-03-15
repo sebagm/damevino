@@ -22,58 +22,63 @@
 <div class="container-fluid px-5 py-5" >
     <div id="colD" class="row py-5" style="background-color: #a1ded6;">
         <div class="col-md-3">
-            <div class="list-group">
-                <h3>Tipo de Vino</h3>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail tipo" value="tinto" id="estoEsTinto" onclick="checa()">Tinto</label>
-                </div>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail tipo" value="blanco" >Blanco</label>
-                </div>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail tipo" value="rosado" >Rosado</label>
-                </div>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail tipo" value="espumoso" >Espumoso</label>
-                </div>
-            </div>
-            <div class="list-group">
-                <h3>Denominación</h3>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail do" value="rioja" >Rioja</label>
-                </div>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail do" value="ribera" >Ribera del Duero</label>
-                </div>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail do" value="condado" >Condado</label>
-                </div>
-            </div>
-            <div class="list-group">
-                <h3>Maridaje</h3>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail marid" value="carne" >Carne</label>
-                </div>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail marid" value="pescado" >Pescado</label>
-                </div>
-                <div class="list-group-item checkbox">
-                    <label><input type="checkbox" class="productDetail marid" value="pasta" >Pasta</label>
-                </div>
-            </div>
-            <div class="list-group">
-                <h3>Puntuación</h3>
-                <div class="list-group-item">
-                    <div class="slidecontainer">
-                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                        <p>Puntos: <span id="demo"></span></p>
+            <form id="f" method="POST" data-post-url="{% url 'vinoteca' %}">
+                {% csrf_token %}
+                <div class="list-group">
+                    <h3>Tipo de Vino</h3>
+                    <div class="list-group-item checkbox">
+                        <label><input name="tinto" type="checkbox" class="productDetail tipo" value="tinto">Tinto</label>
+                    </div>
+                    <div class="list-group-item checkbox">
+                        <label><input name="blanco" type="checkbox" class="productDetail tipo" value="blanco" >Blanco</label>
+                    </div>
+                    <div class="list-group-item checkbox">
+                        <label><input id="rosado" type="checkbox" class="productDetail tipo" value="rosado" >Rosado</label>
+                    </div>
+                    <div class="list-group-item checkbox">
+                        <label><input id="espumoso" type="checkbox" class="productDetail tipo" value="espumoso" >Espumoso</label>
                     </div>
                 </div>
-            </div>
+                <div class="list-group">
+                    <h3>Denominación</h3>
+                    <div class="list-group-item checkbox">
+                        <label><input name="rioja" type="checkbox" class="productDetail do" value="rioja" >Rioja</label>
+                    </div>
+                    <div class="list-group-item checkbox">
+                        <label><input id="ribera" type="checkbox" class="productDetail do" value="ribera" >Ribera del Duero</label>
+                    </div>
+                    <div class="list-group-item checkbox">
+                        <label><input type="checkbox" class="productDetail do" value="condado" >Condado</label>
+                    </div>
+                </div>
+                <div class="list-group">
+                    <h3>Maridaje</h3>
+                    <div class="list-group-item checkbox">
+                        <label><input name="carne" type="checkbox" class="productDetail marid" value="carne" >Carne</label>
+                    </div>
+                    <div class="list-group-item checkbox">
+                        <label><input type="checkbox" class="productDetail marid" value="pescado" >Pescado</label>
+                    </div>
+                    <div class="list-group-item checkbox">
+                        <label><input type="checkbox" class="productDetail marid" value="pasta" >Pasta</label>
+                    </div>
+                </div>
+                <div class="list-group">
+                    <h3>Puntuación</h3>
+                    <div class="list-group-item">
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                            <p>Puntos: <span id="demo"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group">
+                    <button type="submit" class="btn boton">Aplicar filtros</button>
+                </div>
+            </form>    
         </div>
-
-        <div class="col-md-9" id="grupoVinos">
-            <div class="card mb-3 results" style="max-width: 540px;">
+        <div class="col-md-9 d-flex justify-content-center" id="grupoVinos">
+            <div class="card results">
                 {% if vinos %}
                     {% for vino in vinos %}
                         <div class="row no-gutters">
@@ -86,7 +91,7 @@
                                     <p class="card-text">Tipo: {{vino.tipo}}</p>
                                     <p class="card-text"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>
                                     <br/>
-                                    <input type="button" value="Ver vino"/>
+                                    <a href="{% url 'detalles' idVino=vino.id %}" class="btn boton">Ver vino</a>
                                 </div>
                             </div>
                         </div>
@@ -94,10 +99,36 @@
                 {% endif %}
             </div>
         </div>
-
-
-
     </div>
 </div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    $(function() {
+        'use strict';
+    
+        $('#f').on('submit', function() {
+            var post_url = $("#f").data("post-url");
+    
+            var formData = new FormData(this);
+    
+            $.ajax({
+                url : post_url,
+                type: "POST",
+                data : formData,
+                processData: false,
+                contentType: false,
+                success:function(response){
+                    alert("Todo correcto");
+                },
+            });
+    
+            return false;
+        });
+    });
+</script>
 
 {% endblock %}
