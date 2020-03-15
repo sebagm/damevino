@@ -227,7 +227,7 @@ function checa(tintos)
     {
         $("#grupoVinos div").remove();
         //vinos = Vinos.objects.filter(tipo__icontains="Vino tinto");
-        cadena = '<div class="card mb-3 results" style="max-width: 540px;">'+
+/*         cadena = '<div class="card mb-3 results" style="max-width: 540px;">'+
                     '{% if "tintos" %}'+
                         '{% for vino in "tintos" %}'+
                             '<div class="row no-gutters">'+
@@ -248,6 +248,6 @@ function checa(tintos)
                     '{% endif %}'+
                 '</div>';
 
-        $("#grupoVinos").html(cadena);
+        $("#grupoVinos").html(cadena); */
     }
 }

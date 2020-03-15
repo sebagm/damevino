@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from gestionVinos.models import Vinos
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -17,8 +18,9 @@ def vinoteca(request):
 
     return render(request, "vinoteca.html", {"vinos":vinos})
 
-def detalles(request):
-    return render(request, "detalles.html")
+def detalles(request, idVino):
+    v = Vinos.objects.get(id=idVino)
+    return render(request, "detalles.html", {"v":v})
 
 def contacto(request):
     return render(request, "contacto.html")
@@ -28,8 +30,6 @@ def formRecomendador(request):
     tV = request.GET["Vino"]
     return render(request, "recomendador.html", {"rec":rec, "vino":tV})
 
-def vinotecaFiltro(request):
-    filtro = request.GET.get('filtro')
-    vinos = Vinos.objects.filter(tipo=filtro)
-
-    return render(request, "vinoteca.html", {"vinos":vinos})
+def filtroVinoteca(request):
+    v = Vinos.objects.filter(tipo="tinto")
+    return render(request, "vinoteca.html", {"vinos":v})
