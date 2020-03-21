@@ -5,24 +5,15 @@
 
 {% block content %}
 
-<script>
-    $(document).ready(function()
-    {
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("demo");
-        output.innerHTML = slider.value;
-
-        slider.oninput = function()
-        {
-            output.innerHTML = this.value;
-        }
-    });
-</script>
-
 <div class="container-fluid px-5 py-5" >
-    <div id="colD" class="row py-5" style="background-color: #a1ded6;">
+    <div id="colD" class="row py-5" style="background-color: #F2ECD8;">
         <div class="col-md-3">
+<<<<<<< HEAD
             <form id="f" method="GET">
+=======
+            <form id="f" method="POST" data-post-url="{% url 'filtroVinoteca' %}">
+                {% csrf_token %}
+>>>>>>> 71d7c8396370427a0ead5ecc1db334a446a0b6d0
                 <div class="list-group">
                     <h3>Tipo de Vino</h3>
                     <div class="list-group-item checkbox">
@@ -77,7 +68,7 @@
             </form>    
         </div>
         <div class="col-md-9 d-flex justify-content-center" id="grupoVinos">
-            <div class="card results">
+            <div class="card results" id="cartas">
                 {% if vinos %}
                     {% for vino in vinos %}
                         <div class="row no-gutters">
@@ -106,6 +97,19 @@
 {% block js %}
 
 <script>
+
+    $(document).ready(function()
+    {
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function()
+        {
+            output.innerHTML = this.value;
+        }
+    });
+
     $(function() {
         'use strict';
     
@@ -117,7 +121,9 @@
                 type: "GET",
                 processData: false,
                 contentType: false,
-                success:function(reponse){
+                success:function(response){
+                    $("#grupoVinos").remove();
+                    $("#grupoVinos").load(" #grupoVinos");
                     alert("Todo correcto");
                 },
             });
