@@ -22,8 +22,7 @@
 <div class="container-fluid px-5 py-5" >
     <div id="colD" class="row py-5" style="background-color: #a1ded6;">
         <div class="col-md-3">
-            <form id="f" method="POST" data-post-url="{% url 'vinoteca' %}">
-                {% csrf_token %}
+            <form id="f" method="GET">
                 <div class="list-group">
                     <h3>Tipo de Vino</h3>
                     <div class="list-group-item checkbox">
@@ -111,17 +110,14 @@
         'use strict';
     
         $('#f').on('submit', function() {
-            var post_url = $("#f").data("post-url");
-    
-            var formData = new FormData(this);
-    
+            
             $.ajax({
-                url : post_url,
-                type: "POST",
-                data : formData,
+                url : "/filtroVinoteca/",
+                dataType: "json",
+                type: "GET",
                 processData: false,
                 contentType: false,
-                success:function(response){
+                success:function(reponse){
                     alert("Todo correcto");
                 },
             });
