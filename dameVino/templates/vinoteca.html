@@ -8,12 +8,8 @@
 <div class="container-fluid px-5 py-5" >
     <div id="colD" class="row py-5" style="background-color: #F2ECD8;">
         <div class="col-md-3">
-<<<<<<< HEAD
-            <form id="f" method="GET">
-=======
             <form id="f" method="POST" data-post-url="{% url 'filtroVinoteca' %}">
                 {% csrf_token %}
->>>>>>> 71d7c8396370427a0ead5ecc1db334a446a0b6d0
                 <div class="list-group">
                     <h3>Tipo de Vino</h3>
                     <div class="list-group-item checkbox">
@@ -114,16 +110,22 @@
         'use strict';
     
         $('#f').on('submit', function() {
-            
+            var post_url = $("#f").data("post-url");
+    
+            //var formData = new FormData(this);
+
+            var formu = $("#f").serializeArray();
+    
             $.ajax({
-                url : "/filtroVinoteca/",
-                dataType: "json",
-                type: "GET",
-                processData: false,
-                contentType: false,
+                url : post_url,
+                type: "POST",
+                data : formu,
+/*                 processData: false,
+                contentType: false, */
                 success:function(response){
-                    $("#grupoVinos").remove();
-                    $("#grupoVinos").load(" #grupoVinos");
+                    $("#cartas").remove();
+                    //$("#grupoVinos").load(" #grupoVinos");
+                    $("#grupoVinos").append('<div class="card results" id="cartas">{% if filtroVinos %}{% for vino in filtroVinos %}<div class="row no-gutters"><div class="col-md-4"><img src={{vino.img}} width="200" height="200" style="margin: 1em;" class="card-img" alt="..."></div><div class="col-md-8"><div class="card-body"><h5 class="card-title">{{vino.nombre}}</h5><p class="card-text">Tipo: {{vino.tipo}}</p><p class="card-text"><small class="text-muted">D.O: {{vino.denominacion}}</small></p><br/><a href="{% url "detalles" idVino=vino.id %}" class="btn boton">Ver vino</a></div></div></div>{% endfor %}{% else %}<p>NO ESTOY ENTRANDO: {{numV}}</p>{% endif %}</div>')
                     alert("Todo correcto");
                 },
             });
