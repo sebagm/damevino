@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from gestionVinos.models import Vinos
-
+from django.core import serializers
+from django.views.generic.list import ListView
 
 # Create your views here.
 
@@ -32,9 +33,7 @@ def formRecomendador(request):
     return render(request, "recomendador.html", {"rec":rec, "vino":tV})
 
 def filtroVinoteca(request):
-    v = Vinos.objects.filter(anada="2013")
-    return render(request, "vinoteca.html", {"filtroVinos":v})
-
-""" def filtroVinoteca(request):
-    v = Vinos.objects.filter(tipo=request.GET.get('tinto'), denominacion=request.GET.get('rioja'), maridaje=request.GET.get('carne'))
-    return JsonResponse({"vinos":v}) """
+    tipo = request.GET['name']
+    v = Vinos.objects.filter(tipo=tipo)
+    data = serializers.serialize('json', v, fields=('id', 'nombre', 'tipo', 'denominacion', 'img'))
+    return HttpResponse(data, content_type='application/json')

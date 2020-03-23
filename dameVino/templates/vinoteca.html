@@ -6,48 +6,13 @@
 {% block content %}
 
 <div class="container-fluid px-5 py-5" >
-    <div id="colD" class="row py-5" style="background-color: #F2ECD8;">
+    <div id="colD" class="row py-5" style="background-color: #a1ded6;">
         <div class="col-md-3">
-            <form id="f" method="POST" data-post-url="{% url 'filtroVinoteca' %}">
-                {% csrf_token %}
+            <form id="f" method="GET">
+                <!--{% csrf_token %}-->
                 <div class="list-group">
-                    <h3>Tipo de Vino</h3>
-                    <div class="list-group-item checkbox">
-                        <label><input name="tinto" type="checkbox" class="productDetail tipo" value="tinto">Tinto</label>
-                    </div>
-                    <div class="list-group-item checkbox">
-                        <label><input name="blanco" type="checkbox" class="productDetail tipo" value="blanco" >Blanco</label>
-                    </div>
-                    <div class="list-group-item checkbox">
-                        <label><input id="rosado" type="checkbox" class="productDetail tipo" value="rosado" >Rosado</label>
-                    </div>
-                    <div class="list-group-item checkbox">
-                        <label><input id="espumoso" type="checkbox" class="productDetail tipo" value="espumoso" >Espumoso</label>
-                    </div>
-                </div>
-                <div class="list-group">
-                    <h3>Denominación</h3>
-                    <div class="list-group-item checkbox">
-                        <label><input name="rioja" type="checkbox" class="productDetail do" value="rioja" >Rioja</label>
-                    </div>
-                    <div class="list-group-item checkbox">
-                        <label><input id="ribera" type="checkbox" class="productDetail do" value="ribera" >Ribera del Duero</label>
-                    </div>
-                    <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="productDetail do" value="condado" >Condado</label>
-                    </div>
-                </div>
-                <div class="list-group">
-                    <h3>Maridaje</h3>
-                    <div class="list-group-item checkbox">
-                        <label><input name="carne" type="checkbox" class="productDetail marid" value="carne" >Carne</label>
-                    </div>
-                    <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="productDetail marid" value="pescado" >Pescado</label>
-                    </div>
-                    <div class="list-group-item checkbox">
-                        <label><input type="checkbox" class="productDetail marid" value="pasta" >Pasta</label>
-                    </div>
+                    <label>Tipo de vino</label>
+                    <input name="tVino" id="tVino" type="text">
                 </div>
                 <div class="list-group">
                     <h3>Puntuación</h3>
@@ -110,26 +75,35 @@
         'use strict';
     
         $('#f').on('submit', function() {
-            var post_url = $("#f").data("post-url");
-    
-            //var formData = new FormData(this);
+            
+            var name = $("#tVino").val();
 
-            var formu = $("#f").serializeArray();
-    
-            $.ajax({
-                url : post_url,
-                type: "POST",
-                data : formu,
-/*                 processData: false,
-                contentType: false, */
-                success:function(response){
-                    $("#cartas").remove();
-                    //$("#grupoVinos").load(" #grupoVinos");
-                    $("#grupoVinos").append('<div class="card results" id="cartas">{% if filtroVinos %}{% for vino in filtroVinos %}<div class="row no-gutters"><div class="col-md-4"><img src={{vino.img}} width="200" height="200" style="margin: 1em;" class="card-img" alt="..."></div><div class="col-md-8"><div class="card-body"><h5 class="card-title">{{vino.nombre}}</h5><p class="card-text">Tipo: {{vino.tipo}}</p><p class="card-text"><small class="text-muted">D.O: {{vino.denominacion}}</small></p><br/><a href="{% url "detalles" idVino=vino.id %}" class="btn boton">Ver vino</a></div></div></div>{% endfor %}{% else %}<p>NO ESTOY ENTRANDO: {{numV}}</p>{% endif %}</div>')
-                    alert("Todo correcto");
-                },
-            });
-    
+            $.get("{% url 'filtroVinoteca' %}", {"name": name}, function(data){
+                var html = "";
+                var n = data.length;
+                var vId = data[0].fields.id;
+                $("#cartas").remove();
+                $("#grupoVinos").append('<div class="card results" id="cartas">');
+                for(var i = 0; i<n; i++){
+                    html+='<div class="row no-gutters">'
+                                +'<div class="col-md-4">'
+                                    +'<img src='+ data[i].fields.img +' width="200" height="200" style="margin: 1em;" class="card-img" alt="...">'
+                                +'</div>'
+                                +'<div class="col-md-8">'    
+                                    +'<div class="card-body">'
+                                        +'<h5 class="card-title">'+ data[i].fields.nombre +'</h5>'
+                                        +'<p class="card-text">Tipo: '+ data[i].fields.tipo +'</p>'
+                                        +'<p class="card-text"><small class="text-muted">D.O: '+ data[i].fields.denominacion +'</small></p>'
+                                        +'</br>'
+                                        +'<a href="{% url "detalles" idVino=1 %}" class="btn boton">Ver vino</a>'
+                                    +'</div>'
+                                +'</div>'
+                            +'</div>'
+                        +'</div>';
+                }
+                $("#cartas").append(html);
+                alert(vId);
+            })
             return false;
         });
     });
