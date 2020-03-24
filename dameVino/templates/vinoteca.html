@@ -81,28 +81,29 @@
             $.get("{% url 'filtroVinoteca' %}", {"name": name}, function(data){
                 var html = "";
                 var n = data.length;
-                var vId = data[0].fields.id;
+                var vId;
                 $("#cartas").remove();
                 $("#grupoVinos").append('<div class="card results" id="cartas">');
                 for(var i = 0; i<n; i++){
+                    var vId = Number(data[i].id);
                     html+='<div class="row no-gutters">'
                                 +'<div class="col-md-4">'
-                                    +'<img src='+ data[i].fields.img +' width="200" height="200" style="margin: 1em;" class="card-img" alt="...">'
+                                    +'<img src='+ data[i].img +' width="200" height="200" style="margin: 1em;" class="card-img" alt="...">'
                                 +'</div>'
                                 +'<div class="col-md-8">'    
                                     +'<div class="card-body">'
-                                        +'<h5 class="card-title">'+ data[i].fields.nombre +'</h5>'
-                                        +'<p class="card-text">Tipo: '+ data[i].fields.tipo +'</p>'
-                                        +'<p class="card-text"><small class="text-muted">D.O: '+ data[i].fields.denominacion +'</small></p>'
+                                        +'<h5 class="card-title">'+ data[i].nombre +'</h5>'
+                                        +'<p class="card-text">Tipo: '+ data[i].tipo +'</p>'
+                                        +'<p class="card-text"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
                                         +'</br>'
-                                        +'<a href="{% url "detalles" idVino=1 %}" class="btn boton">Ver vino</a>'
+                                        +'<a href="{% url "detalles" idVino=vId %}" class="btn boton">'+ data[i].id +'</a>'
                                     +'</div>'
                                 +'</div>'
                             +'</div>'
                         +'</div>';
                 }
                 $("#cartas").append(html);
-                alert(vId);
+                alert(n);
             })
             return false;
         });

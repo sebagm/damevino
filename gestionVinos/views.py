@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from gestionVinos.models import Vinos
 from django.core import serializers
 from django.views.generic.list import ListView
+import json
 
 # Create your views here.
 
@@ -34,6 +35,9 @@ def formRecomendador(request):
 
 def filtroVinoteca(request):
     tipo = request.GET['name']
-    v = Vinos.objects.filter(tipo=tipo)
-    data = serializers.serialize('json', v, fields=('id', 'nombre', 'tipo', 'denominacion', 'img'))
-    return HttpResponse(data, content_type='application/json')
+    vinos = Vinos.objects.filter(tipo=tipo)
+    vinos = [vino_serializer(vino) for vino in vinos]
+    return HttpResponse(json.dumps(vinos), content_type='application/json')
+
+def vino_serializer(vino):
+    return {'id':vino.id, 'nombre':vino.nombre, 'tipo':vino.tipo, 'denominacion':vino.denominacion, 'img':vino.img}
