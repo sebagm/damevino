@@ -6,43 +6,128 @@
 {% block content %}
 
 <div class="container-fluid px-5 py-5" >
-    <div id="colD" class="row py-5" style="background-color: #a1ded6;">
-        <div class="col-md-3">
+    <div id="colD" class="row px-5 py-5" style="background-color: #a1ded6;">
+        <div class="col-xs-12 col-sm-3 px-0" style="overflow-y: auto; max-height: 500px;">
             <form id="f" method="GET">
-                <!--{% csrf_token %}-->
-                <div class="list-group">
-                    <label>Tipo de vino</label>
-                    <input name="tVino" id="tVino" type="text">
-                </div>
-                <div class="list-group">
-                    <h3>Puntuación</h3>
-                    <div class="list-group-item">
-                        <div class="slidecontainer">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                            <p>Puntos: <span id="demo"></span></p>
+                <div class="accordion" id="acordeon">
+                    <div class="card border-secondary">
+                        <div class="card-header" id="headVino">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseVino" aria-expanded="true" aria-controls="collapseVino">
+                                    <span style="float: left;">Tipo de vino</span>
+                                    <span style="float: rigth; margin-left: 100px;">
+                                        <svg class="bi bi-chevron-down" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseVino" class="collapse" aria-labelledby="headVino" data-parent="#acordeon">
+                            <div class="card-body" style="padding-left: 3.5em;">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> I have a bike</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> I have a car</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> I have a boat</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-secondary">
+                        <div class="card-header" id="headDenom">
+                            <h2>
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseDenom" aria-expanded="true" aria-controls="collapseDenom">
+                                    <span style="float: left;">Denominación</span>
+                                    <span style="float: rigth; margin-left: 78px;">
+                                        <svg class="bi bi-chevron-down" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseDenom" class="collapse" aria-labelledby="headDenom" data-parent="#acordeon">
+                            <div class="card-body" style="padding-left: 3.5em;">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> I have a bike</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> I have a car</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> I have a boat</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-secondary">
+                        <div class="card-header" id="headMarid">
+                            <h2>
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseMarid" aria-expanded="true" aria-controls="collapseMarid">
+                                    <span style="float: left;">Maridaje</span>
+                                    <span style="float: rigth; margin-left: 135px;">
+                                        <svg class="bi bi-chevron-down" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseMarid" class="collapse" aria-labelledby="headMarid" data-parent="#acordeon">
+                            <div class="card-body" style="padding-left: 3.5em;">
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                <label for="vehicle1"> I have a bike</label><br>
+                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                <label for="vehicle2"> I have a car</label><br>
+                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                <label for="vehicle3"> I have a boat</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-secondary">
+                        <div class="card-header" id="headP">
+                            <h2>
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseP" aria-expanded="true" aria-controls="collapseP">
+                                    <span style="float: left;">Puntuación</span>
+                                    <span style="float: rigth; margin-left: 110px;">
+                                        <svg class="bi bi-chevron-down" width="0.7em" height="0.7em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseP" class="collapse" aria-labelledby="headP" data-parent="#acordeon">
+                            <div class="card-body">
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                                    <p>Puntos: <span id="demo"></span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="list-group">
+                <div class="list-group py-3">
                     <button type="submit" class="btn boton">Aplicar filtros</button>
                 </div>
             </form>    
         </div>
-        <div class="col-md-9 d-flex justify-content-center" id="grupoVinos">
-            <div class="card results" id="cartas">
+        <div class="col-xs-12 col-sm-9 d-flex justify-content-end" id="grupoVinos">
+            <div id="cartas" style="overflow-y: auto; max-height: 500px; width: 95%;">
                 {% if vinos %}
                     {% for vino in vinos %}
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <img src={{vino.img}} width="200" height="200" style="margin: 1em;" class="card-img" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{vino.nombre}}</h5>
-                                    <p class="card-text">Tipo: {{vino.tipo}}</p>
-                                    <p class="card-text"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>
-                                    <br/>
-                                    <a href="{% url 'detalles' vino.id %}" class="btn boton">Ver vino</a>
+                        <div class="card border-secondary mb-1">
+                            <div class="row no-gutters">
+                                <div class="col-xs-10 col-md-4">
+                                    <img src={{vino.img}} width="auto" height="auto" style="margin: 1em;" class="card-img" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-size: 2em;">{{vino.nombre}}</h5>
+                                        <br/>
+                                        <p class="card-text" style="font-size: 1.4em;"><small class="text-muted">Tipo: {{vino.tipo}}</small></p>
+                                        <p class="card-text" style="font-size: 1.4em;"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>
+                                        <br/>
+                                        <a href="{% url 'detalles' vino.id %}" class="btn boton">Ver detalles</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -82,22 +167,22 @@
                 var html = "";
                 var n = data.length;
                 var vId;
-                $("#cartas").remove();
-                $("#grupoVinos").append('<div class="card results" id="cartas">');
+                $("#cartas").empty();
                 for(var i = 0; i<n; i++){
                     var vId = data[i].id;
-                    console.log(vId);
-                    html+='<div class="row no-gutters">'
-                                +'<div class="col-md-4">'
-                                    +'<img src='+ data[i].img +' width="200" height="200" style="margin: 1em;" class="card-img" alt="...">'
-                                +'</div>'
-                                +'<div class="col-md-8">'    
-                                    +'<div class="card-body">'
-                                        +'<h5 class="card-title">'+ data[i].nombre +'</h5>'
-                                        +'<p class="card-text">Tipo: '+ data[i].tipo +'</p>'
-                                        +'<p class="card-text"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
-                                        +'</br>'
-                                        +'<a href="../detalles/'+vId+'" class="btn boton">Ver Detalles</a>'
+                    html+='<div class="card border-secondary mb-1">'
+                            +'<div class="row no-gutters">'
+                                    +'<div class="col-xs-10 col-md-4">'
+                                        +'<img src='+ data[i].img +' width="auto" height="auto" style="margin: 1em;" class="card-img" alt="...">'
+                                    +'</div>'
+                                    +'<div class="col-md-8">'    
+                                        +'<div class="card-body">'
+                                            +'<h5 class="card-title">'+ data[i].nombre +'</h5>'
+                                            +'<p class="card-text">Tipo: '+ data[i].tipo +'</p>'
+                                            +'<p class="card-text"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
+                                            +'</br>'
+                                            +'<a href="../detalles/'+vId+'" class="btn boton">Ver Detalles</a>'
+                                        +'</div>'
                                     +'</div>'
                                 +'</div>'
                             +'</div>'

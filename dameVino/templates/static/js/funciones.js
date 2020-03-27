@@ -65,12 +65,12 @@ function tipoVino(){
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tVino.length; i++)
-        $("#colRV").append("<button id='"+tVino[i]+"' class='btn opcionesRV' onclick = tipoVid(this);>"+tVino[i]+"</button>");
+        $("#colRV").append("<button class='btn opcionesRV' value='"+ tVino[i] +"' onclick = tipoVvalue(this);>"+tVino[i]+"</button>");
 }
 
 // Función para obtener el id de la opción escogida por el usuario
-function tipoVid(comp){
-    tipoV = comp.id;
+function tipoVvalue(comp){
+    tipoV = comp.value;
 
     if(fin == false)
         tipoDenominacion();
@@ -86,11 +86,11 @@ function tipoDenominacion(){
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tDenominacion.length; i++)
-        $("#colRV").append("<button id='"+tDenominacion[i]+"' class='btn opcionesRV' onclick = tipoDid(this);>"+tDenominacion[i]+"</button>");
+        $("#colRV").append("<button class='btn opcionesRV' value='"+tDenominacion[i]+"' onclick = tipoDvalue(this);>"+tDenominacion[i]+"</button>");
 }
 
-function tipoDid(comp){
-    tipoD = comp.id;
+function tipoDvalue(comp){
+    tipoD = comp.value;
     
     if(fin == false)
         tipoEdad();
@@ -106,11 +106,11 @@ function tipoEdad(){
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tEdad.length; i++)
-        $("#colRV").append("<button id='"+tEdad[i]+"' class='btn opcionesRV' onclick = tipoEid(this);>"+tEdad[i]+"</button>");
+        $("#colRV").append("<button class='btn opcionesRV' value='"+tEdad[i]+"' onclick = tipoEvalue(this);>"+tEdad[i]+"</button>");
 }
 
-function tipoEid(comp){
-    tipoE = comp.id;
+function tipoEvalue(comp){
+    tipoE = comp.value;
     
     if(fin == false)
         tipoMaridaje();
@@ -126,11 +126,11 @@ function tipoMaridaje(){
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tMaridaje.length; i++)
-        $("#colRV").append("<button id='"+tMaridaje[i]+"' class='btn opcionesRV' onclick = tipoMid(this);>"+tMaridaje[i]+"</button>");
+        $("#colRV").append("<button class='btn opcionesRV' value='"+tMaridaje[i]+"' onclick = tipoMvalue(this);>"+tMaridaje[i]+"</button>");
 }
 
-function tipoMid(comp){
-    tipoM = comp.id;
+function tipoMvalue(comp){
+    tipoM = comp.value;
     
     if(fin == false)
         tipoGusto();
@@ -146,11 +146,11 @@ function tipoGusto(){
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tGusto.length; i++)
-        $("#colRV").append("<button id='"+tGusto[i]+"' class='btn opcionesRV' onclick = tipoGid(this);>"+tGusto[i]+"</button>");
+        $("#colRV").append("<button class='btn opcionesRV' value='"+tGusto[i]+"' onclick = tipoGvalue(this);>"+tGusto[i]+"</button>");
 }
 
-function tipoGid(comp){
-    tipoG = comp.id;
+function tipoGvalue(comp){
+    tipoG = comp.value;
     
     if(fin == false)
         tipoTextura();
@@ -166,11 +166,11 @@ function tipoTextura(){
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tTextura.length; i++)
-        $("#colRV").append("<button id='"+tTextura[i]+"' class='btn opcionesRV' onclick = tipoTid(this);>"+tTextura[i]+"</button>");
+        $("#colRV").append("<button class='btn opcionesRV' value='"+tTextura[i]+"' onclick = tipoTvalue(this);>"+tTextura[i]+"</button>");
 }
 
-function tipoTid(comp){
-    tipoT = comp.id;
+function tipoTvalue(comp){
+    tipoT = comp.value;
     
     if(fin == false)
         tipoCuerpo();
@@ -186,11 +186,11 @@ function tipoCuerpo(){
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tCuerpo.length; i++)
-        $("#colRV").append("<button id='"+tCuerpo[i]+"' class='btn opcionesRV' onclick = tipoCid(this);>"+tCuerpo[i]+"</button>");
+        $("#colRV").append("<button class='btn opcionesRV' value='"+tCuerpo[i]+"' onclick = tipoCvalue(this);>"+tCuerpo[i]+"</button>");
 }
 
-function tipoCid(comp){
-    tipoC = comp.id;
+function tipoCvalue(comp){
+    tipoC = comp.value;
     fin = true;
     resumen();
 }
@@ -218,35 +218,3 @@ function resumen(){
 
 //=========================================FUNCIONES VINOTECA=========================================
 //====================================================================================================
-
-function checa(tintos)
-{
-    var checkBox = document.getElementById("estoEsTinto");
-    if(checkBox.checked == true)
-    {
-        $("#grupoVinos div").remove();
-        //vinos = Vinos.objects.filter(tipo__icontains="Vino tinto");
-/*         cadena = '<div class="card mb-3 results" style="max-width: 540px;">'+
-                    '{% if "tintos" %}'+
-                        '{% for vino in "tintos" %}'+
-                            '<div class="row no-gutters">'+
-                                '<div class="col-md-4">'+
-                                    '<img src={{vino.img}} width="200" height="200" style="margin: 1em;" class="card-img" alt="...">'+
-                                '</div>'+
-                                '<div class="col-md-8">'+
-                                    '<div class="card-body">'+
-                                        '<h5 class="card-title">{{vino.nombre}}</h5>'+
-                                        '<p class="card-text">Tipo: {{vino.tipo}}</p>'+
-                                        '<p class="card-text"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>'+
-                                        '<br/>'+
-                                        '<input type="button" value="Ver vino"/>'+
-                                    '</div>'+
-                                '</div>'+
-                            '</div>'+
-                        '{% endfor %}'+
-                    '{% endif %}'+
-                '</div>';
-
-        $("#grupoVinos").html(cadena); */
-    }
-}
