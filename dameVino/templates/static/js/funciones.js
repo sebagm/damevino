@@ -58,17 +58,19 @@ function inicioRecomendador(){
 
 // Función que muestra las opciones a elegir de los tipos de vinos
 function tipoVino(){
-    tVino = new Array("Tinto", "Blanco", "Rosado", "Espumoso", "Generoso", "Dulce");
+    tVino = new Array("Tinto", "Blanco", "Rosado", "Espumoso", "Generoso", "Dulce", );
     
     $("#tituloR").text("Tipo de vino");
-    $("#colRV button").remove();
+    $("#cRV button").remove();
     $("#contenedorRVenviar input").remove();
-
+    
     for(var i=0; i<tVino.length; i++)
-        $("#colRV").append("<button class='btn opcionesRV' value='"+ tVino[i] +"' onclick = tipoVvalue(this);>"+tVino[i]+"</button>");
+        $("#cRV").append("<button class='btn opcionesRV' value='"+ tVino[i] +"' onclick = tipoVvalue(this);>"+tVino[i]+"</button>");
+
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoVvalue(this);><b>Siguiente sin elección</b></button>");
 }
 
-// Función para obtener el id de la opción escogida por el usuario
+// Función para obtener el value de la opción escogida por el usuario
 function tipoVvalue(comp){
     tipoV = comp.value;
 
@@ -82,11 +84,14 @@ function tipoDenominacion(){
     tDenominacion = new Array("La Rioja", "Ribera del Duero", "Somontano", "Toro", "Manchuela", "Rueda", "Jerez-Xérès-Sherry", "Rías Baixas", "Calatayud", "Corpinnat", "Bierzo", "Campo de Borja", "Yecla", "Montsant", "Empordá", "Montilla-Moriles", "Priorat", "Tres Riberas", "Ribeira Sacra", "Cava", "Alicante", "Jumilla", "Madrid", "Navarra", "Valencia", "Sierras de Málaga", "Manzanilla Sanlúcar de Barrameda", "VT Cádiz", "VT Castilla y León", "VT El Terrerazo", "VT Extremadura", "VT Mallorca");
     
     $("#tituloR").text("Denominación");
-    $("#colRV button").remove();
+    $("#cRV button").remove();
+    $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tDenominacion.length; i++)
-        $("#colRV").append("<button class='btn opcionesRV' value='"+tDenominacion[i]+"' onclick = tipoDvalue(this);>"+tDenominacion[i]+"</button>");
+        $("#cRV").append("<button class='btn opcionesRV' value='"+tDenominacion[i]+"' onclick = tipoDvalue(this);>"+tDenominacion[i]+"</button>");
+
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoDvalue(this);><b>Siguiente sin elección</b></button>");        
 }
 
 function tipoDvalue(comp){
@@ -102,11 +107,16 @@ function tipoEdad(){
     tEdad = new Array("Joven", "Viejo");
 
     $("#tituloR").text("Edad del vino");
-    $("#colRV button").remove();
+    $("#cRV button").remove();
+    $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tEdad.length; i++)
-        $("#colRV").append("<button class='btn opcionesRV' value='"+tEdad[i]+"' onclick = tipoEvalue(this);>"+tEdad[i]+"</button>");
+        $("#cRV").append("<button class='btn opcionesRV' value='"+tEdad[i]+"' onclick = tipoEvalue(this);>"+tEdad[i]+"</button>");
+
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoEvalue(this);>Siguiente sin elección</button>");
+
+    
 }
 
 function tipoEvalue(comp){
@@ -122,11 +132,14 @@ function tipoMaridaje(){
     tMaridaje = new Array("Carne", "Ensalada", "Pescado", "Postres", "Pasta", "Queso", "Embutidos", "Platos de cuchara", "Verduras, legumbres y hortalizas", "Patatas", "Cocina española", "Cocina mediterránea", "Cocina vegetariana", "Cocina china", "Cocina italiana", "Cocina japonesa", "Cocina india", "Setas", "Frutas", "Arroz", "Aperitivos", "Marisco", "Huevos", "Platos combinados", "Tapas");
 
     $("#tituloR").text("¿Qué vas a comer?");
-    $("#colRV button").remove();
+    $("#cRV button").remove();
+    $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tMaridaje.length; i++)
-        $("#colRV").append("<button class='btn opcionesRV' value='"+tMaridaje[i]+"' onclick = tipoMvalue(this);>"+tMaridaje[i]+"</button>");
+        $("#cRV").append("<button class='btn opcionesRV' value='"+tMaridaje[i]+"' onclick = tipoMvalue(this);>"+tMaridaje[i]+"</button>");
+
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoMvalue(this);>Siguiente sin elección</button>");        
 }
 
 function tipoMvalue(comp){
@@ -142,11 +155,14 @@ function tipoGusto(){
     tGusto = new Array("Afrutado", "Floral", "Vegetal", "Seco", "Semiseco", "Dulce");
 
     $("#tituloR").text("Sabor del vino");
-    $("#colRV button").remove();
+    $("#cRV button").remove();
+    $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tGusto.length; i++)
-        $("#colRV").append("<button class='btn opcionesRV' value='"+tGusto[i]+"' onclick = tipoGvalue(this);>"+tGusto[i]+"</button>");
+        $("#cRV").append("<button class='btn opcionesRV' value='"+tGusto[i]+"' onclick = tipoGvalue(this);>"+tGusto[i]+"</button>");
+
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoGvalue(this);>Siguiente sin elección</button>");        
 }
 
 function tipoGvalue(comp){
@@ -162,11 +178,14 @@ function tipoTextura(){
     tTextura = new Array("Suave", "Áspero", "Agrio", "Fresco", "Pesado", "Astringente", "Aterciopelado");
 
     $("#tituloR").text("Textura del vino");
-    $("#colRV button").remove();
+    $("#cRV button").remove();
+    $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tTextura.length; i++)
-        $("#colRV").append("<button class='btn opcionesRV' value='"+tTextura[i]+"' onclick = tipoTvalue(this);>"+tTextura[i]+"</button>");
+        $("#cRV").append("<button class='btn opcionesRV' value='"+tTextura[i]+"' onclick = tipoTvalue(this);>"+tTextura[i]+"</button>");
+
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoTvalue(this);>Siguiente sin elección</button>");
 }
 
 function tipoTvalue(comp){
@@ -182,11 +201,14 @@ function tipoCuerpo(){
     tCuerpo = new Array("Ligero", "Medio", "Pleno");
 
     $("#tituloR").text("Cuerpo del vino");
-    $("#colRV button").remove();
+    $("#cRV button").remove();
+    $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
     for(var i=0; i<tCuerpo.length; i++)
-        $("#colRV").append("<button class='btn opcionesRV' value='"+tCuerpo[i]+"' onclick = tipoCvalue(this);>"+tCuerpo[i]+"</button>");
+        $("#cRV").append("<button class='btn opcionesRV' value='"+tCuerpo[i]+"' onclick = tipoCvalue(this);>"+tCuerpo[i]+"</button>");
+
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoCvalue(this);>Siguiente sin elección</button>");        
 }
 
 function tipoCvalue(comp){
@@ -196,16 +218,17 @@ function tipoCvalue(comp){
 }
 
 function resumen(){
-    $("#colRV button").remove();
+    $("#cRV button").remove();
+    $("#botonSiguiente button").remove();
     $("#tituloR").text("Características seleccionadas");
     
-    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoVino();>Tipo de vino: "+tipoV+"</button>");
-    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoDenominacion();>Denominación: "+tipoD+"</button>");
-    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoEdad();> Edad: "+tipoE+"</button>");
-    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoMaridaje();>Maridaje: "+tipoM+"</button>");
-    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoGusto();>Sabor: "+tipoG+"</button>");
-    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoTextura();>Textura: "+tipoT+"</button>");
-    $("#colRV").append("<button class='btn opcionesRV' onclick = tipoCuerpo();>Cuerpo: "+tipoC+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoVino();>Tipo de vino: "+tipoV+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoDenominacion();>Denominación: "+tipoD+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoEdad();> Edad: "+tipoE+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoMaridaje();>Maridaje: "+tipoM+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoGusto();>Sabor: "+tipoG+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoTextura();>Textura: "+tipoT+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoCuerpo();>Cuerpo: "+tipoC+"</button>");
     $("#contenedorRVenviar form").append("<input type='hidden' name='Vino' value='"+tipoV+"'>");
     $("#contenedorRVenviar form").append("<input type='hidden' name='Denom' value='"+tipoD+"'>");
     $("#contenedorRVenviar form").append("<input type='hidden' name='Edad' value='"+tipoE+"'>");

@@ -68,7 +68,18 @@
     background-color: transparent;
     font-weight: bold;
 }
-.boton:hover, .boton:active{
+
+.botonFiltro{
+    color: #762933;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: 2px solid #762933; 
+    background-color: white;
+    font-weight: bold;
+}
+
+.boton:hover, .boton:active, .botonFiltro:hover, .botonFiltro:active{
     color: #FFFFFF;
     background-color: #762933;
 }
@@ -78,13 +89,14 @@
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    border: 2px solid #762933; 
+    border: 5px solid #762933; 
     background-color: white;
     width: 150px;
     height: 150px;
     font-weight: bold;
     font-size: 1.1em;
     margin: 5px;
+    text-align: center;
 }
 
 .opcionesRV:hover, .opcionesRV:active{

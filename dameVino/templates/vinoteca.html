@@ -25,12 +25,12 @@
                         </div>
                         <div id="collapseVino" class="collapse" aria-labelledby="headVino" data-parent="#acordeon">
                             <div class="card-body" style="padding-left: 3.5em;">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1"> I have a bike</label><br>
-                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                                <label for="vehicle2"> I have a car</label><br>
-                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                                <label for="vehicle3"> I have a boat</label>
+                                <label><input type="checkbox" id="vinoTinto" name="vinos[]" value="Vino tinto"> Vino tinto</label><br>
+                                <label><input type="checkbox" id="vinoBlanco" name="vinos[]" value="Vino blanco"> Vino blanco</label><br>
+                                <label><input type="checkbox" id="vinoRosado" name="vinos[]" value="Vino rosado"> Vino rosado</label><br>
+                                <label><input type="checkbox" id="vinoEspumoso" name="vinos[]" value="Vino espumoso"> Vino espumoso</label><br>
+                                <label><input type="checkbox" id="vinoGeneroso" name="vinos[]" value="Vino generoso"> Vino generoso</label><br>
+                                <label><input type="checkbox" id="vinoDulce" name="vinos[]" value="Vino dulce"> Vino dulce</label><br>
                             </div>
                         </div>
                     </div>
@@ -49,12 +49,7 @@
                         </div>
                         <div id="collapseDenom" class="collapse" aria-labelledby="headDenom" data-parent="#acordeon">
                             <div class="card-body" style="padding-left: 3.5em;">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1"> I have a bike</label><br>
-                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                                <label for="vehicle2"> I have a car</label><br>
-                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                                <label for="vehicle3"> I have a boat</label>
+
                             </div>
                         </div>
                     </div>
@@ -73,12 +68,7 @@
                         </div>
                         <div id="collapseMarid" class="collapse" aria-labelledby="headMarid" data-parent="#acordeon">
                             <div class="card-body" style="padding-left: 3.5em;">
-                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                <label for="vehicle1"> I have a bike</label><br>
-                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                                <label for="vehicle2"> I have a car</label><br>
-                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                                <label for="vehicle3"> I have a boat</label>
+                                
                             </div>
                         </div>
                     </div>
@@ -95,7 +85,7 @@
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapseP" class="collapse" aria-labelledby="headP" data-parent="#acordeon">
+                        <div id="collapseP" class="collapse show" aria-labelledby="headP" data-parent="#acordeon">
                             <div class="card-body">
                                 <div class="slidecontainer">
                                     <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
@@ -106,7 +96,7 @@
                     </div>
                 </div>
                 <div class="list-group py-3">
-                    <button type="submit" class="btn boton">Aplicar filtros</button>
+                    <button type="submit" class="btn botonFiltro">Aplicar filtros</button>
                 </div>
             </form>    
         </div>
@@ -117,14 +107,13 @@
                         <div class="card border-secondary mb-1">
                             <div class="row no-gutters">
                                 <div class="col-xs-10 col-md-4">
-                                    <img src={{vino.img}} width="auto" height="auto" style="margin: 1em;" class="card-img" alt="...">
+                                    <img src={{vino.img}} width="150" height="215" style="margin: 1em;" class="card-img" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title" style="font-size: 2em;">{{vino.nombre}}</h5>
-                                        <br/>
-                                        <p class="card-text" style="font-size: 1.4em;"><small class="text-muted">Tipo: {{vino.tipo}}</small></p>
-                                        <p class="card-text" style="font-size: 1.4em;"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>
+                                        <p class="card-text" style="font-size: 1.2em;"><small class="text-muted">Tipo: {{vino.tipo}}</small></p>
+                                        <p class="card-text" style="font-size: 1.2em;"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>
                                         <br/>
                                         <a href="{% url 'detalles' vino.id %}" class="btn boton">Ver detalles</a>
                                     </div>
@@ -161,9 +150,14 @@
     
         $('#f').on('submit', function() {
             
-            var name = $("#tVino").val();
+            var fD = "";
 
-            $.get("{% url 'filtroVinoteca' %}", {"name": name}, function(data){
+            $("#f input[type=checkbox]").each(function(){
+                if(this.checked)
+                    fD += $(this).val()+", ";
+            })
+
+            $.get("{% url 'filtroVinoteca' %}", {"fD": fD}, function(data){
                 var html = "";
                 var n = data.length;
                 var vId;
@@ -173,13 +167,13 @@
                     html+='<div class="card border-secondary mb-1">'
                             +'<div class="row no-gutters">'
                                     +'<div class="col-xs-10 col-md-4">'
-                                        +'<img src='+ data[i].img +' width="auto" height="auto" style="margin: 1em;" class="card-img" alt="...">'
+                                        +'<img src='+ data[i].img +' width="150" height="215" style="margin: 1em;" class="card-img" alt="...">'
                                     +'</div>'
                                     +'<div class="col-md-8">'    
                                         +'<div class="card-body">'
                                             +'<h5 class="card-title">'+ data[i].nombre +'</h5>'
-                                            +'<p class="card-text">Tipo: '+ data[i].tipo +'</p>'
-                                            +'<p class="card-text"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
+                                            +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">Tipo: '+ data[i].tipo +'</small></p>'
+                                            +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
                                             +'</br>'
                                             +'<a href="../detalles/'+vId+'" class="btn boton">Ver Detalles</a>'
                                         +'</div>'

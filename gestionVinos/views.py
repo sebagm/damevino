@@ -30,12 +30,18 @@ def contacto(request):
 
 def formRecomendador(request):
     rec = True
-    tV = request.GET["Vino"]
+    if request.GET["Vino"] == "Sin elección":
+        tV = "No se ha elegido tipo de vino"
+    else:   
+        tV = request.GET["Vino"]
     return render(request, "recomendador.html", {"rec":rec, "vino":tV})
 
 def filtroVinoteca(request):
-    tipo = request.GET['name']
-    vinos = Vinos.objects.filter(tipo=tipo)
+    t = request.GET['fD']
+    tipo = t.split(', ')
+    print(tipo[0])
+    print(tipo[1])
+    vinos = Vinos.objects.filter(tipo=tipo[0] and tipo[1])
     vinos = [vino_serializer(vino) for vino in vinos]
     return HttpResponse(json.dumps(vinos), content_type='application/json')
 
