@@ -7,7 +7,7 @@ class Vinos(models.Model):
     anada = models.CharField(max_length=4)
     denominacion = models.CharField(max_length=50)
     bodega = models.CharField(max_length=50)
-    puntos = models.CharField(max_length=4)
+    puntos = models.IntegerField()
     maridaje = models.TextField()
     vista = models.TextField()
     nariz = models.TextField()
