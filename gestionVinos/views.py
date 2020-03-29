@@ -4,7 +4,9 @@ from gestionVinos.models import Vinos
 from django.core import serializers
 from django.views.generic.list import ListView
 import json
-from django.db.models import Q
+import gestionVinos.ContendBased as CB
+import pandas as pd
+import sqlite3
 
 # Create your views here.
 
@@ -17,7 +19,6 @@ def recomendador(request):
 
 
 def vinoteca(request):
-
     vinos = Vinos.objects.all()
 
     return render(request, "vinoteca.html", {"vinos":vinos})
@@ -31,11 +32,65 @@ def contacto(request):
 
 def formRecomendador(request):
     rec = True
-    if request.GET["Vino"] == "Sin elección":
-        tV = "No se ha elegido tipo de vino"
-    else:   
-        tV = request.GET["Vino"]
-    return render(request, "recomendador.html", {"rec":rec, "vino":tV})
+
+    conn = sqlite3.connect("db.sqlite3")
+    datos = pd.read_sql_query("SELECT * FROM gestionVinos_vinos;", conn)
+
+    prediccion = []
+    for index, row in datos.iterrows():
+        cadena = row['tipo'] + "; " + row['denominacion'] + "; " + row['maridaje'] + "; " + row['vista'] + "; " + row['nariz'] + "; " + row['boca']
+        prediccion.insert(index, cadena)
+    datos['prediccion'] = prediccion
+
+    cb = CB.ContentBased()
+    cb.fit(datos,columna_descripcion='prediccion')
+    
+    cadena = ""
+
+    tipo = request.GET["tipoV"]
+    if tipo != "":
+        cadena += tipo + " "
+    
+    denom = request.GET["tipoD"]
+    if denom != "" and denom != "Sin elección":
+        cadena += denom + " "
+
+    edad = request.GET["tipoE"]
+    if edad != "" and edad != "Sin elección":
+        cadena += edad + " "
+
+    maridaje = request.GET["tipoM"]
+    if maridaje != "" and maridaje != "Sin elección":
+        cadena += maridaje + " "
+
+    gusto = request.GET["tipoG"]
+    if gusto != "" and gusto != "Sin elección":
+        cadena += gusto + " "
+
+    textura = request.GET["tipoT"]
+    if textura != "" and textura != "Sin elección":
+        cadena += textura + " "
+
+    cuerpo = request.GET["tipoC"]
+    if cuerpo != "" and cuerpo != "Sin elección":
+        cadena += cuerpo
+
+    print(cadena)
+    vinos_pd = cb.predict([cadena])
+    del vinos_pd['prediccion']
+
+    vinos = [vino_serializer2(vino) for vino in vinos_pd.iterrows()]
+    return HttpResponse(json.dumps(vinos), content_type='application/json')
+
+def vino_serializer2(vino):
+    print(vino[0])
+    print("ESTO QUE ES")
+    print(vino[1].id)
+    print(vino[1].nombre)
+    print(vino[1].tipo)
+    print(vino[1].denominacion)
+    print(vino[1].img)
+    return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'denominacion':vino[1].denominacion, 'img':vino[1].img}
 
 def filtroVinoteca(request):
     

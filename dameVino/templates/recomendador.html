@@ -5,7 +5,7 @@
 {% block content %}
 
 {% if rec == False %}
-    <div class="container-fluid px-5 py-4" style="background-color: white;">
+    <div id="principal" class="container-fluid px-5 py-4" style="background-color: white;">
         <h1 id="tituloR"></h1>
         <div id="colRV" class="row px-5 py-5 justify-content-center" style="background-color: #a1ded6;">
             <div id="cRV" class="col" align="center" style="overflow-y: auto; max-height: 350px;">
@@ -16,12 +16,61 @@
             
         </div>
         <div id="contenedorRVenviar" class="row justify-content-center">
-            <form action="/formRecomendador" method="GET">
+            <form id="f" method="GET">
             
             </form>
         </div>
+
         <script>
             inicioRecomendador();
+
+            $(function() {
+                'use strict';
+            
+                $('#f').on('submit', function()
+                {
+
+                    $.get("{% url 'formRecomendador' %}", {"tipoV": tipoV, "tipoD": tipoD, "tipoE": tipoE, "tipoM": tipoM, "tipoG": tipoG, "tipoT": tipoT, "tipoC": tipoC}, function(data){
+                        var html = "";
+                        var n = data.length;
+                        var vId;
+                        $("#principal").empty();
+                        html = '<div id="colD" class="row px-5 py-5" style="background-color: #a1ded6;"><div class="col-xs-12 col-sm-9 d-flex justify-content-end" id="grupoVinos"><div id="cartas" style="overflow-y: auto; max-height: 500px; width: 95%;">'
+
+                        if (n > 0)
+                        {
+                            for(var i = 0; i<n; i++)
+                            {
+                                var vId = data[i].id;
+                                html+='<div class="card border-secondary mb-1">'
+                                        +'<div class="row no-gutters">'
+                                                +'<div class="col-xs-10 col-md-4">'
+                                                    +'<img src='+ data[i].img +' width="135" height="200" style="margin: 1em;" class="card-img" alt="...">'
+                                                +'</div>'
+                                                +'<div class="col-md-8">'    
+                                                    +'<div class="card-body">'
+                                                        +'<h5 class="card-title" style="font-size: 2em;">'+ data[i].nombre +'</h5>'
+                                                        +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">Tipo: '+ data[i].tipo +'</small></p>'
+                                                        +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
+                                                        +'</br>'
+                                                        +'<a href="../detalles/'+vId+'" class="btn boton">Ver Detalles</a>'
+                                                    +'</div>'
+                                                +'</div>'
+                                            +'</div>'
+                                        +'</div>';
+                            }
+                            html += '</div></div></div></div>';
+                        }
+                        else
+                        {
+                            html+="<div><h2 class=\"text-center\"><span>No hay resultados</span></h2></div>";
+                        }
+                        $("#principal").append(html);
+                    })
+                    return false;
+                });
+            });
+
         </script>
     </div>
 {% else %}
