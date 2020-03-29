@@ -67,7 +67,7 @@ function tipoVino(){
     for(var i=0; i<tVino.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+ tVino[i] +"' onclick = tipoVvalue(this);>"+tVino[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoVvalue(this);><b>Siguiente sin elección</b></button>");
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoVvalue(this);><b>Saltar esta opción</b></button>");
 }
 
 // Función para obtener el value de la opción escogida por el usuario
@@ -91,7 +91,7 @@ function tipoDenominacion(){
     for(var i=0; i<tDenominacion.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tDenominacion[i]+"' onclick = tipoDvalue(this);>"+tDenominacion[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoDvalue(this);><b>Siguiente sin elección</b></button>");        
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoDvalue(this);><b>Saltar esta opción</b></button>");        
 }
 
 function tipoDvalue(comp){
@@ -114,7 +114,7 @@ function tipoEdad(){
     for(var i=0; i<tEdad.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tEdad[i]+"' onclick = tipoEvalue(this);>"+tEdad[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoEvalue(this);>Siguiente sin elección</button>");
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoEvalue(this);>Saltar esta opción</button>");
 
     
 }
@@ -139,7 +139,7 @@ function tipoMaridaje(){
     for(var i=0; i<tMaridaje.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tMaridaje[i]+"' onclick = tipoMvalue(this);>"+tMaridaje[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoMvalue(this);>Siguiente sin elección</button>");        
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoMvalue(this);>Saltar esta opción</button>");        
 }
 
 function tipoMvalue(comp){
@@ -162,7 +162,7 @@ function tipoGusto(){
     for(var i=0; i<tGusto.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tGusto[i]+"' onclick = tipoGvalue(this);>"+tGusto[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoGvalue(this);>Siguiente sin elección</button>");        
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoGvalue(this);>Saltar esta opción</button>");        
 }
 
 function tipoGvalue(comp){
@@ -185,7 +185,7 @@ function tipoTextura(){
     for(var i=0; i<tTextura.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tTextura[i]+"' onclick = tipoTvalue(this);>"+tTextura[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoTvalue(this);>Siguiente sin elección</button>");
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoTvalue(this);>Saltar esta opción</button>");
 }
 
 function tipoTvalue(comp){
@@ -208,7 +208,7 @@ function tipoCuerpo(){
     for(var i=0; i<tCuerpo.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tCuerpo[i]+"' onclick = tipoCvalue(this);>"+tCuerpo[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoCvalue(this);>Siguiente sin elección</button>");        
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoCvalue(this);>Saltar esta opción</button>");        
 }
 
 function tipoCvalue(comp){
@@ -241,3 +241,58 @@ function resumen(){
 
 //=========================================FUNCIONES VINOTECA=========================================
 //====================================================================================================
+
+function borrarFiltro(){
+    $("#divTipo input[type=checkbox]").each(function(){
+        if(this.checked)
+            this.checked = false;
+    })
+
+    $("#divDO input[type=checkbox]").each(function(){
+        if(this.checked)
+            this.checked = false
+    })
+
+    $("#divMaridaje input[type=checkbox]").each(function(){
+        if(this.checked)
+            this.checked = false
+    })
+
+    var fPuntuacion = $("#puntuacion").text();
+
+    $.get("{% url 'filtroVinoteca' %}", {"fPuntuacion":fPuntuacion}, function(data){
+        var html = "";
+        var n = data.length;
+        var vId;
+        $("#cartas").empty();
+        if (n > 0)
+        {
+            for(var i = 0; i<n; i++)
+            {
+                var vId = data[i].id;
+                html+='<div class="card border-secondary mb-1">'
+                        +'<div class="row no-gutters">'
+                                +'<div class="col-xs-10 col-md-4">'
+                                    +'<img src='+ data[i].img +' width="135" height="200" style="margin: 1em;" class="card-img" alt="...">'
+                                +'</div>'
+                                +'<div class="col-md-8">'    
+                                    +'<div class="card-body">'
+                                        +'<h5 class="card-title">'+ data[i].nombre +'</h5>'
+                                        +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">Tipo: '+ data[i].tipo +'</small></p>'
+                                        +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
+                                        +'</br>'
+                                        +'<a href="../detalles/'+vId+'" class="btn boton">Ver Detalles</a>'
+                                    +'</div>'
+                                +'</div>'
+                            +'</div>'
+                        +'</div>'
+                    +'</div>';
+            }
+        }
+        else
+        {
+            html+="<div><h2 class=\"text-center\"><span>No hay resultados</span></h2></div>";
+        }
+        $("#cartas").append(html);
+    })
+}

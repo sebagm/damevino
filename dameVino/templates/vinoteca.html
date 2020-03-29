@@ -11,7 +11,7 @@
             <form id="f" method="GET">
                 <div class="accordion" id="acordeon">
                     <div class="card border-secondary">
-                        <div class="card-header" id="headVino">
+                        <div class="card-header" id="headVino" style="height: 70px;">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseVino" aria-expanded="true" aria-controls="collapseVino">
                                     <span style="float: left;">Tipo de vino</span>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="card border-secondary">
-                        <div class="card-header" id="headDenom">
+                        <div class="card-header" id="headDenom" style="height: 70px;">
                             <h2>
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseDenom" aria-expanded="true" aria-controls="collapseDenom">
                                     <span style="float: left;">Denominación</span>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div class="card border-secondary">
-                        <div class="card-header" id="headMarid">
+                        <div class="card-header" id="headMarid" style="height: 70px;">
                             <h2>
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseMarid" aria-expanded="true" aria-controls="collapseMarid">
                                     <span style="float: left;">Maridaje</span>
@@ -129,7 +129,7 @@
                         </div>
                     </div>
                     <div class="card border-secondary">
-                        <div class="card-header" id="headP">
+                        <div class="card-header" id="headP" style="height: 70px;">
                             <h2>
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseP" aria-expanded="true" aria-controls="collapseP">
                                     <span style="float: left;">Puntuación</span>
@@ -151,8 +151,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="list-group py-3">
+                <div class="list-group py-2">
                     <button type="submit" class="btn botonFiltro">Aplicar filtros</button>
+                    <button class="btn botonFiltro mt-2" onclick=borrarFiltro()>Borrar filtros</button>
                 </div>
             </form>    
         </div>
@@ -163,7 +164,7 @@
                         <div class="card border-secondary mb-1">
                             <div class="row no-gutters">
                                 <div class="col-xs-10 col-md-4">
-                                    <img src={{vino.img}} width="150" height="215" style="margin: 1em;" class="card-img" alt="...">
+                                    <img src={{vino.img}} width="135" height="200" style="margin: 1em;" class="card-img" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -239,11 +240,11 @@
                         html+='<div class="card border-secondary mb-1">'
                                 +'<div class="row no-gutters">'
                                         +'<div class="col-xs-10 col-md-4">'
-                                            +'<img src='+ data[i].img +' width="150" height="215" style="margin: 1em;" class="card-img" alt="...">'
+                                            +'<img src='+ data[i].img +' width="135" height="200" style="margin: 1em;" class="card-img" alt="...">'
                                         +'</div>'
                                         +'<div class="col-md-8">'    
                                             +'<div class="card-body">'
-                                                +'<h5 class="card-title">'+ data[i].nombre +'</h5>'
+                                                +'<h5 class="card-title" style="font-size: 2em;">'+ data[i].nombre +'</h5>'
                                                 +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">Tipo: '+ data[i].tipo +'</small></p>'
                                                 +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
                                                 +'</br>'

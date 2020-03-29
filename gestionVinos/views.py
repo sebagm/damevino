@@ -38,44 +38,44 @@ def formRecomendador(request):
     return render(request, "recomendador.html", {"rec":rec, "vino":tV})
 
 def filtroVinoteca(request):
+    
+    query = "SELECT * FROM gestionVinos_vinos WHERE ("
+    
     t = request.GET['fDivTipo']
-    print(t)
-    tipo = t.split(', ')
+    if t != "":
+        tipo = t.split(', ')
+        nT = len(tipo)
+        for tip in range(nT-1):
+            query += "tipo = '" + tipo[tip] + "'"
+            if tip < nT-2:
+                query += " OR "
+        query += " AND "
 
     do = request.GET['fDivDO']
-    dOrigen = do.split(', ')
+    if do != "":
+        dOrigen = do.split(', ')
+        ndO = len(dOrigen)
+        for dorig in range(ndO-1):
+            query += "denominacion = '" + dOrigen[dorig] + "'"
+            if dorig < ndO-2:
+                query += " OR "
+        query += " AND "
 
     m = request.GET['fDivMaridaje']
-    maridaje = m.split(', ')
+    if m != "":
+        maridaje = m.split(', ')
+        nMaridaje = len(maridaje)
+        for marid in range(nMaridaje-1):
+            query += "maridaje = '" + maridaje[marid] + "'"
+            if marid < nMaridaje-2:
+                query += " OR "
+        query += " AND "
 
     p = request.GET['fPuntuacion']
+    query += "puntos <= " + p + ")"
 
-    query = "SELECT * FROM gestionVinos_vinos WHERE ("
-    for tip in tipo:
-        """ if tip == tipo[-1]:
-            query += "tipo = '" + tip + "' "
-        else: """
-        query += "tipo = '" + tip + "' OR "
+    print(query)
     
-    for dorig in dOrigen:
-        """ if dorig == dOrigen[-1]:
-            query += "OR denominacion = '" + dorig + "' "
-        else: """
-        query += "denominacion = '" + dorig + "' OR "
-
-    for marid in maridaje:
-        if marid == maridaje[-1]:
-            query += "maridaje = '" + marid + "' "
-        else:
-            query += "maridaje = '" + marid + "' OR "
-
-    query += ") AND puntos <= " + p
-
-    print(query)
-    if query.__contains__("tipo = ''") and query.__contains__("denominacion = ''") and query.__contains__("maridaje = ''"):
-        query = "SELECT * FROM gestionVinos_vinos WHERE puntos <= " + p
-    print(query)
-    """vinos = Vinos.objects.filter(Q(tipo=tipo[0]) | Q(tipo=tipo[1]))"""
     vinos = Vinos.objects.raw(query)
     vinos = [vino_serializer(vino) for vino in vinos]
     return HttpResponse(json.dumps(vinos), content_type='application/json')
