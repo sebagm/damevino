@@ -49,7 +49,7 @@ def filtroVinoteca(request):
             query += "tipo = '" + tipo[tip] + "'"
             if tip < nT-2:
                 query += " OR "
-        query += " AND "
+        query += ") AND ("
 
     do = request.GET['fDivDO']
     if do != "":
@@ -59,17 +59,17 @@ def filtroVinoteca(request):
             query += "denominacion = '" + dOrigen[dorig] + "'"
             if dorig < ndO-2:
                 query += " OR "
-        query += " AND "
+        query += ") AND ("
 
     m = request.GET['fDivMaridaje']
     if m != "":
         maridaje = m.split(', ')
         nMaridaje = len(maridaje)
         for marid in range(nMaridaje-1):
-            query += "maridaje = '" + maridaje[marid] + "'"
+            query += "maridaje LIKE '%" + maridaje[marid] + "%'"
             if marid < nMaridaje-2:
                 query += " OR "
-        query += " AND "
+        query += ") AND ("
 
     p = request.GET['fPuntuacion']
     query += "puntos <= " + p + ")"
