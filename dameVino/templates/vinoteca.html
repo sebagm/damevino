@@ -172,7 +172,7 @@
                                         <p class="card-text" style="font-size: 1.2em;"><small class="text-muted">Tipo: {{vino.tipo}}</small></p>
                                         <p class="card-text" style="font-size: 1.2em;"><small class="text-muted">D.O: {{vino.denominacion}}</small></p>
                                         <br/>
-                                        <a href="{% url 'detalles' vino.id %}" class="btn boton">Ver detalles</a>
+                                        <a href="{% url 'detalles' vino.id %}" target="_blank" class="btn boton">Ver detalles</a>
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +248,7 @@
                                                 +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">Tipo: '+ data[i].tipo +'</small></p>'
                                                 +'<p class="card-text" style="font-size: 1.2em;"><small class="text-muted">D.O: '+ data[i].denominacion +'</small></p>'
                                                 +'</br>'
-                                                +'<a href="../detalles/'+vId+'" class="btn boton">Ver Detalles</a>'
+                                                +'<a href="../detalles/'+vId+'" target="_blank" class="btn boton">Ver Detalles</a>'
                                             +'</div>'
                                         +'</div>'
                                     +'</div>'

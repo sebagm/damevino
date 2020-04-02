@@ -53,6 +53,9 @@ var tipoV, tipoD, tipoE, tipoM, tipoG, tipoT, tipoC, fin;
 // Función  que inicia el formulario dinámico
 function inicioRecomendador(){
     fin = false;
+    $("#colRV").empty();
+    $("#colRV").append('<div id="cRV" class="col" align="center" style="overflow-y: auto; max-height: 350px;"></div>');
+    $("#botonSiguiente").empty();
     tipoVino();
 }
 

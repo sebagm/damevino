@@ -5,37 +5,53 @@
 
 {% block content %}
 
-<div class="container-fluid px-5 py-5" style="background-color: white;">
-    <div id="colD" class="row py-5" style="background-color: #a1ded6;">
-        <div class="col-12 col-lg-5 d-flex justify-content-center">
-            <img class="img-fluid img-thumbnail" src="{{v.img}}">
+<div class="container-fluid px-5 pt-5" style="background-color: white;">
+    <div id="colD" class="container-fluid" style="background-color: #a1ded6;">
+        <div class="row justify-content-center pt-4">
+            <h1 id="tituloD">{{v.nombre}}</h1>
         </div>
-        <div class="col-12 col-lg-7">
-            <div class="row justify-content-center">
-                <h1 id="tituloD">{{v.nombre}}</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-xs-12 py-4" align="center"">
+                <img class="img-fluid img-thumbnail border-secondary" src="{{v.img}}" style="border-radius: 20px;">
             </div>
-            <div class="row justify-content-center">
-                <div class="d-flex justify-content-center">
-                    <div class="card-body">
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Tipo vino: </span>{{v.tipo}}</p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Añada: </span>
+            <div class="col-lg-8 col-xs-12 py-4">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="background-color: #a1ded6;">
+                        <span style="font-size: 1.2em; font-weight: bold;"><i class="fas fa-wine-glass-alt" style="font-size: 25px; color: #762933;"></i>&nbsp; Tipo vino: &nbsp;</span>
+                        <span style="font-size: 1em;">{{v.tipo}}</span>
+                    </li>
+                    <li class="list-group-item" style="background-color: #a1ded6;">
+                        <span style="font-size: 1.2em; font-weight: bold;"><i class="fas fa-map-marker-alt" style="font-size: 25px; color: #762933;"></i>&nbsp; Denominación: &nbsp;</span>
+                        <span style="font-size: 1em;">{{v.denominacion}}</span>
+                    </li>
+                    <li class="list-group-item" style="background-color: #a1ded6;">
+                        <span style="font-size: 1.2em; font-weight: bold;"><i class="fas fa-info-circle" style="font-size: 25px; color: #762933;"></i>&nbsp; Añada: </span>
+                        <span style="font-size: 1em;">&nbsp;
                             {% if v.anada == 'Nan' %}
                                 -
                             {% else %}
                                 {{v.anada}}
                             {% endif %}
-                        </p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Denominación: </span>{{v.denominacion}}</p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Bodega: </span>{{v.bodega}}</p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Puntuación: </span>{{v.puntos}}</p>
-                        <p class="card-text"><span class="badge badge-pill badge-dark">Maridaje: </span>{{v.maridaje}}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center pt-4">
-                <a href="#" class="btn boton" style="width: 25%;">Comprar</a>
+                        </span>
+                    </li>
+                    <li class="list-group-item" style="background-color: #a1ded6;">
+                        <span style="font-size: 1.2em; font-weight: bold;"><i class="fas fa-wine-bottle" style="font-size: 25px; color: #762933;"></i>&nbsp; Bodega: &nbsp;</span>
+                        <span style="font-size: 1em;">{{v.bodega}}</span>
+                    </li>
+                    <li class="list-group-item" style="background-color: #a1ded6;">
+                        <span style="font-size: 1.2em; font-weight: bold;"><i class="fas fa-award" style="font-size: 25px; color: #762933;"></i>&nbsp; Puntuación: &nbsp;</span>
+                        <span style="font-size: 1em;">{{v.puntos}}</span>
+                    </li>
+                    <li class="list-group-item" style="background-color: #a1ded6;">
+                        <span style="font-size: 1.2em; font-weight: bold;"><i class="fas fa-utensils" style="font-size: 25px; color: #762933;"></i>&nbsp; Maridaje: &nbsp;</span>
+                        <span style="font-size: 1em;">{{v.maridaje}}</span>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
+    <div class="row justify-content-center py-4">
+        <a href="#" class="btn boton"><b>Comprar</b></a>
     </div>
 </div>
 
