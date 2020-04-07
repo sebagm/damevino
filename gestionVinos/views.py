@@ -48,7 +48,7 @@ def formRecomendador(request):
     cadena = ""
 
     tipo = request.GET["tipoV"]
-    if tipo != "":
+    if tipo != "" and tipo != "Sin elección":
         cadena += tipo + " "
     
     denom = request.GET["tipoD"]
@@ -57,7 +57,25 @@ def formRecomendador(request):
 
     edad = request.GET["tipoE"]
     if edad != "" and edad != "Sin elección":
-        cadena += edad + " "
+        if tipo == "" or tipo == "Sin elección":
+            if edad == "Joven":
+                cadena += edad + ", " + cb.Joven + " "
+            elif edad == "Viejo":
+                cadena += edad + ", " + cb.Viejo + " "
+        elif tipo == "Tinto" and edad == "Joven":
+            cadena += edad + ", " + cb.JovenTinto + " "
+        elif tipo == "Tinto" and edad == "Viejo":
+            cadena += edad + ", " + cb.ViejoTinto + " "
+        elif tipo == "Blanco" and edad == "Joven":
+            cadena += edad + ", " + cb.JovenBlanco + " "
+        elif tipo == "Blanco" and edad == "Viejo":
+            cadena += edad + ", " + cb.ViejoBlanco + " "
+        elif tipo == "Rosado" and edad == "Joven":
+            cadena += edad + ", " + cb.JovenRosado + " "
+        elif tipo == "Rosado" and edad == "Viejo":
+            cadena += edad + ", " + cb.ViejoRosado + " "
+        else:
+            cadena += edad + " "
 
     maridaje = request.GET["tipoM"]
     if maridaje != "" and maridaje != "Sin elección":
@@ -106,7 +124,12 @@ def formRecomendador(request):
 
     gusto = request.GET["tipoG"]
     if gusto != "" and gusto != "Sin elección":
-        cadena += gusto + " "
+        if gusto == "Afrutado":
+            cadena += gusto + ", " + cb.afrutado + " "
+        elif gusto == "Floral":
+            cadena += gusto + ", " + cb.floral + " "
+        elif gusto == "Vegetal":
+            cadena += gusto + ", " + cb.vegetal + " "
 
     textura = request.GET["tipoT"]
     if textura != "" and textura != "Sin elección":

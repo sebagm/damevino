@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 
 class ContentBased(object):
 
+    #Variables Maridaje
     Carne = "Carnes estofadas, Aves, Buey, Cerdo, Jabalí, Carne blanca, Cordero, Lomo, Pollo, Carnes a la parrilla, Ternera, Barbacoa, Carnes asadas, Cerdo, Carne roja, Pato, Magret, Caza, Lomo adobado"
     Ensalada = "Ensaladas, Ensalada de pollo, Ensalada de salmón, Ensalada César, Ensalada de atún"
     Pescado = "Atún, Pescado azul, Salmón, Caviar, Tortilla de bacalao, Bacalao, Pescado blanco"
@@ -21,13 +22,28 @@ class ContentBased(object):
     Cocina_china = "Cocina china, Agridulce"
     Cocina_italiana = "Carpaccio, Cocina italiana"
     Cocina_japonesa = "Cocina japonesa, Agridulce"
-    Cocina_india: "Cocina india, Especias"
+    Cocina_india = "Cocina india, Especias"
     Setas = "Setas, Arroz con setas"
     Arroz = "Risotto de gambas, Risotto de queso, Risotto de setas, Risotto de pollo, Risotto de verduras, Arroz con setas, Arroz, Risotto, Arroces, Paella, Risotto de champiñones"
     Aperitivos = "Ahumados, Huevos, Aperitivos y canapés"
     Marisco = "Marisco, Centollo, Tortilla de camarones, Langostinos, Gambas"
     Platos_Combinados = "Platos combinados"
     Pate_foie = "Patés o foie gras, Foie, Paté de anchoas"
+
+    #Variables Edad y Tipo
+    Joven = "transparente, acerado, amarillo pálido, amarillo pajizo, morado, violeta, rojo, rojo cereza, rojo sangre, rosa cereza, rosa frambuesa, bermellón"
+    Viejo = "amarillo limón, dorado, topacio, rojizo, oro, ámbar, rojo anaranjado, teja, terroso, granate, púrpura, rojo picota, negro, anaranjado, salmón, asalmonado, pardo"
+    JovenBlanco = "transparente, acerado, amarillo pálido, amarillo pajizo"
+    JovenTinto = "morado, violeta, rojo, rojo cereza, rojo sangre"
+    JovenRosado = "rosa cereza, rosa frambuesa, bermellón"
+    ViejoBlanco = "amarillo limón, dorado, topacio, rojizo, oro, ámbar"
+    ViejoTinto = "rojo anaranjado, teja, terroso, granate, púrpura, rojo picota, negro"
+    ViejoRosado = "anaranjado, salmón, asalmonado, pardo"
+
+    #Variables sabor
+    afrutado = "cítricos, limón, naranja, lima, pomelo, tropicales, piña, plátano, frutas blancas, manzana, pera, frutos rojos, fresa, frambuesa, mora, arándano, albaricoque, melocotón, frutos secos, almendra, nueces, ciruela, uvas pasas"
+    floral = "flor de espino, almendra amarga, anís, flor de acacia, miel, azahar, rosas, violetas"
+    vegetal = "pimiento verde, hinojo, anisado, monte bajo, romero, tomillo, orégano, heno, canela"
 
     """
     Modelo de recomendación de articulos basados en tags.
