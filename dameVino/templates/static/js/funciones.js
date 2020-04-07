@@ -84,7 +84,7 @@ function tipoVvalue(comp){
 }
 
 function tipoDenominacion(){
-    tDenominacion = new Array("La Rioja", "Ribera del Duero", "Somontano", "Toro", "Manchuela", "Rueda", "Jerez-Xérès-Sherry", "Rías Baixas", "Calatayud", "Corpinnat", "Bierzo", "Campo de Borja", "Yecla", "Montsant", "Empordá", "Montilla-Moriles", "Priorat", "Tres Riberas", "Ribeira Sacra", "Cava", "Alicante", "Jumilla", "Madrid", "Navarra", "Valencia", "Sierras de Málaga", "Manzanilla Sanlúcar de Barrameda", "VT Cádiz", "VT Castilla y León", "VT El Terrerazo", "VT Extremadura", "VT Mallorca");
+    tDenominacion = new Array("Ribera del Duero", "Rioja", "Bierzo", "Toro", "Jerez-Xérès-Sherry", "Jumilla", "Somontano", "Terra Alta", "Corpinnat", "Catalunya", "Cava", "Málaga", "Rueda", "Campo De Borja", "Yecla", "Rías Baixas", "Empordà", "Penedés", "Ribeiro", "Calatayud", "Montilla-Moriles", "Navarra", "Madrid", "Alicante", "Bullas", "La Mancha", "Sierras de Málaga", "Priorat", "Lanzarote", "Montsant", "Almansa", "Manzanilla Sanlúcar de Barrameda", "VT Extremadura", "VT Castilla", "VT Cádiz", "VT EL Terrerazo", "VT Castilla y León");
     
     $("#tituloR").text("Denominación");
     $("#cRV button").remove();
@@ -132,7 +132,7 @@ function tipoEvalue(comp){
 }
 
 function tipoMaridaje(){
-    tMaridaje = new Array("Carne", "Ensalada", "Pescado", "Postres", "Pasta", "Queso", "Embutidos", "Platos de cuchara", "Verduras, legumbres y hortalizas", "Patatas", "Cocina española", "Cocina mediterránea", "Cocina vegetariana", "Cocina china", "Cocina italiana", "Cocina japonesa", "Cocina india", "Setas", "Frutas", "Arroz", "Aperitivos", "Marisco", "Huevos", "Platos combinados", "Tapas");
+    tMaridaje = new Array("Carne", "Ensalada", "Pescado", "Postres", "Pasta", "Queso", "Embutidos", "Platos de cuchara", "Verduras, legumbres y hortalizas", "Patatas", "Cocina española", "Cocina mediterránea", "Cocina vegetariana", "Cocina china", "Cocina italiana", "Cocina japonesa", "Cocina india", "Setas", "Frutas", "Arroz", "Aperitivos", "Marisco", "Platos Combinados", "Pate y foie", "Entrantes");
 
     $("#tituloR").text("¿Qué vas a comer?");
     $("#cRV button").remove();

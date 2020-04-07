@@ -61,7 +61,48 @@ def formRecomendador(request):
 
     maridaje = request.GET["tipoM"]
     if maridaje != "" and maridaje != "Sin elección":
-        cadena += maridaje + " "
+        if maridaje == "Carne":
+            cadena += maridaje + ", " + cb.Carne + " "
+        elif maridaje == "Ensalada":
+            cadena += maridaje + ", " + cb.Ensalada + " "
+        elif maridaje == "Pescado":
+            cadena += maridaje + ", " + cb.Pescado + " "
+        elif maridaje == "Postres":
+            cadena += maridaje + ", " + cb.Postres + " "
+        elif maridaje == "Pasta":
+            cadena += maridaje + ", " + cb.Pasta + " "
+        elif maridaje == "Queso":
+            cadena += maridaje + ", " + cb.Queso + " "
+        elif maridaje == "Embutidos":
+            cadena += maridaje + ", " + cb.Embutidos + " "
+        elif maridaje == "Platos de cuchara":
+            cadena += maridaje + ", " + cb.Platos_cuchara + " "
+        elif maridaje == "Verduras, legumbres y hortalizas":
+            cadena += maridaje + ", " + cb.Verduras_legumbres_hortalizas + " "
+        elif maridaje == "Patatas":
+            cadena += maridaje + ", " + cb.Patatas + " "
+        elif maridaje == "Cocina española":
+            cadena += maridaje + ", " + cb.Cocina_espanola + " "
+        elif maridaje == "Cocina china":
+            cadena += maridaje + ", " + cb.Cocina_china + " "
+        elif maridaje == "Cocina italiana":
+            cadena += maridaje + ", " + cb.Cocina_italiana + " "
+        elif maridaje == "Cocina japonesa":
+            cadena += maridaje + ", " + cb.Cocina_japonesa + " "
+        elif maridaje == "Cocina india":
+            cadena += maridaje + ", " + cb.Cocina_india + " "
+        elif maridaje == "Setas":
+            cadena += maridaje + ", " + cb.Setas + " "
+        elif maridaje == "Arroz":
+            cadena += maridaje + ", " + cb.Arroz + " "
+        elif maridaje == "Aperitivos":
+            cadena += maridaje + ", " + cb.Aperitivos + " "
+        elif maridaje == "Marisco":
+            cadena += maridaje + ", " + cb.Marisco + " "
+        elif maridaje == "Platos Combinados":
+            cadena += maridaje + ", " + cb.Platos_Combinados + " "
+        elif maridaje == "Pate y foie":
+            cadena += maridaje + ", " + cb.Pate_foie + " "
 
     gusto = request.GET["tipoG"]
     if gusto != "" and gusto != "Sin elección":
@@ -83,14 +124,14 @@ def formRecomendador(request):
     return HttpResponse(json.dumps(vinos), content_type='application/json')
 
 def vino_serializer2(vino):
-    print(vino[0])
+    """print(vino[0])
     print("ESTO QUE ES")
     print(vino[1].id)
     print(vino[1].nombre)
     print(vino[1].tipo)
     print(vino[1].denominacion)
-    print(vino[1].img)
-    return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'denominacion':vino[1].denominacion, 'img':vino[1].img}
+    print(vino[1].img)"""
+    return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'denominacion':vino[1].denominacion, 'img':vino[1].img, 'url':vino[1].url}
 
 def filtroVinoteca(request):
     
@@ -136,4 +177,4 @@ def filtroVinoteca(request):
     return HttpResponse(json.dumps(vinos), content_type='application/json')
 
 def vino_serializer(vino):
-    return {'id':vino.id, 'nombre':vino.nombre, 'tipo':vino.tipo, 'denominacion':vino.denominacion, 'img':vino.img}
+    return {'id':vino.id, 'nombre':vino.nombre, 'tipo':vino.tipo, 'denominacion':vino.denominacion, 'img':vino.img, 'url':vino.url}

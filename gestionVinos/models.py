@@ -4,7 +4,7 @@ from django.db import models
 class Vinos(models.Model):
     nombre = models.CharField(max_length=100)
     tipo = models.CharField(max_length=10)
-    anada = models.CharField(max_length=4)
+    anada = models.IntegerField()
     denominacion = models.CharField(max_length=50)
     bodega = models.CharField(max_length=50)
     puntos = models.IntegerField()
@@ -13,3 +13,4 @@ class Vinos(models.Model):
     nariz = models.TextField()
     boca = models.TextField()
     img = models.TextField()
+    url = models.TextField()

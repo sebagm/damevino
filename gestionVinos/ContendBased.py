@@ -6,6 +6,29 @@ from sklearn.neighbors import NearestNeighbors
 from nltk.corpus import stopwords
 
 class ContentBased(object):
+
+    Carne = "Carnes estofadas, Aves, Buey, Cerdo, Jabalí, Carne blanca, Cordero, Lomo, Pollo, Carnes a la parrilla, Ternera, Barbacoa, Carnes asadas, Cerdo, Carne roja, Pato, Magret, Caza, Lomo adobado"
+    Ensalada = "Ensaladas, Ensalada de pollo, Ensalada de salmón, Ensalada César, Ensalada de atún"
+    Pescado = "Atún, Pescado azul, Salmón, Caviar, Tortilla de bacalao, Bacalao, Pescado blanco"
+    Postres = "Mousse de chocolate, Frutas escarchadas o desecadas, Chocolate, Avellanas, Helados, Frutos secos y oleaginosos, Cacahuetes, Tartas y pasteles, Postres salados, Galletas de chocolate, Repostería, Almendras, Tarta de chocolate, Castañas"
+    Pasta = "Pasta fresca, Pasta a la boloñesa"
+    Queso = "Quesos, Queso de cabra, Queso seco, Queso manchego, Queso tierno, Queso curado, Queso semicurado, Queso azul, Queso de oveja"
+    Embutidos = "Salchichón, Chorizo, Jamón serrano, Jamón y embutidos, Jamón ibérico"
+    Platos_cuchara = "Potajes y guisos, Guiso de carne, Platos de cuchara, Cremas"
+    Verduras_legumbres_hortalizas = "Hierbas frescas, Moussaka de verduras, Platos de hortalizas, Platos de verdura legumbres y hortalizas"
+    Patatas = "Patatas, Patatas asadas"
+    Cocina_espanola = "Platos típicos, Cocina regional, Tapas, Cocina española"
+    Cocina_china = "Cocina china, Agridulce"
+    Cocina_italiana = "Carpaccio, Cocina italiana"
+    Cocina_japonesa = "Cocina japonesa, Agridulce"
+    Cocina_india: "Cocina india, Especias"
+    Setas = "Setas, Arroz con setas"
+    Arroz = "Risotto de gambas, Risotto de queso, Risotto de setas, Risotto de pollo, Risotto de verduras, Arroz con setas, Arroz, Risotto, Arroces, Paella, Risotto de champiñones"
+    Aperitivos = "Ahumados, Huevos, Aperitivos y canapés"
+    Marisco = "Marisco, Centollo, Tortilla de camarones, Langostinos, Gambas"
+    Platos_Combinados = "Platos combinados"
+    Pate_foie = "Patés o foie gras, Foie, Paté de anchoas"
+
     """
     Modelo de recomendación de articulos basados en tags.
     El modelo vectoriza cada articulo para poder calcular la similitud. 
