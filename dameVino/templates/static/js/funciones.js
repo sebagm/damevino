@@ -21,6 +21,9 @@ function enviar(){
     var correo = document.getElementById("email").value;
     var msg = document.getElementById("mensaje").value;
 
+    $("#group1 #advertencia").remove();
+    $("#group2 #advertencia").remove();
+    $("#group3 #advertencia").remove();
 
     if(nombre != ""){
         if(correo != ""){
