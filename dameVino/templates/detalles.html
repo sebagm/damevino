@@ -10,11 +10,11 @@
         <div class="row justify-content-center pt-4">
             <h1 id="tituloD">{{v.nombre}}</h1>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="box-shadow: 0px 3px 5px gray;">
             <div class="col-lg-4 col-xs-12 py-4" align="center"">
                 <img class="img-fluid img-thumbnail border-secondary" src="{{v.img}}" style="border-radius: 20px;">
             </div>
-            <div class="col-lg-8 col-xs-12 py-4">
+            <div class="col-lg-7 col-xs-12 py-4">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" style="background-color: #a1ded6;">
                         <span style="font-size: 1.2em; font-weight: bold;"><i class="fas fa-wine-glass-alt" style="font-size: 25px; color: #762933;"></i>&nbsp; Tipo vino: &nbsp;</span>
@@ -27,7 +27,9 @@
                     <li class="list-group-item" style="background-color: #a1ded6;">
                         <span style="font-size: 1.2em; font-weight: bold;"><i class="fas fa-info-circle" style="font-size: 25px; color: #762933;"></i>&nbsp; Añada: </span>
                         <span style="font-size: 1em;">&nbsp;
-                            {% if v.anada == 'Nan' %}
+                            {% if v.anada == "Nan" %}
+                                -
+                            {% elif v.anada == "nan" %}
                                 -
                             {% else %}
                                 {{v.anada}}
@@ -49,9 +51,41 @@
                 </ul>
             </div>
         </div>
+        <div class="row justify-content-center pt-4 pb-4">
+            <h2 id="tituloD">Nuestra cata</h2>
+        </div>
+        <div class="row justify-content-center pb-5">
+            <div class="col-lg-4 col-xs-12 py-4 px-5 mx-4 mb-4" style="border: 1px solid grey; border-radius: 15px;">
+                <div class="row justify-content-center">
+                    <img src="{% static 'img/ojo.svg' %}" width="35px" height="35px">&nbsp;
+                    <span style="font-size: 1.2em; font-weight: bold;">Vista</span>
+                </div>
+                <div class="row text-center pt-3">
+                    {{v.vista}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12 py-4 px-5 mx-4 mb-4" style="border: 1px solid grey; border-radius: 15px;">
+                <div class="row justify-content-center">
+                    <img src="{% static 'img/taste.svg' %}" width="35px" height="35px">&nbsp;
+                    <span style="font-size: 1.2em; font-weight: bold;">Nariz</span>
+                </div>
+                <div class="row text-center pt-3">
+                    {{v.nariz}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12 py-4 px-5 mx-4" style="border: 1px solid grey; border-radius: 15px;">
+                <div class="row justify-content-center">
+                    <img src="{% static 'img/wine-tasting.svg' %}" width="35px" height="35px">&nbsp;
+                    <span style="font-size: 1.2em; font-weight: bold;">Boca</span>
+                </div>
+                <div class="row text-center pt-3">
+                    {{v.boca}}
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row justify-content-center py-4">
-        <a href="{{v.url}}" class="btn boton"><b>Comprar</b></a>
+        <a href="{{v.url}}" target="_blank" class="btn boton" style="width: 25%;"><b>Comprar</b></a>
     </div>
 </div>
 
