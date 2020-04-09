@@ -57,10 +57,13 @@
                         }
                         else
                         {
+                            $("#colRV").empty();
+                            $("#tituloR").html("Recomendación de DameVino");
+                            $("#contenedorRVenviar form").empty();
                             html+="<div><h2 class=\"text-center\"><span>No hay resultados</span></h2></div>";
                         }
                         $("#colRV").append(html);
-                        $("#botonSiguiente").append("<button class='btn boton' onclick = inicioRecomendador() style='width: 25%'>Nueva recomendación</button>");        
+                        $("#botonSiguiente").append("<button class='btn boton' onclick = inicioRecomendador()>Nueva recomendación</button>");        
                     })
                     return false;
                 });

@@ -3,11 +3,14 @@
 function eslogan(){
     var titulo = document.title
 
-    if(titulo == "DameVino" || titulo == "DameVino - Recomendador" || titulo == "DameVino - Detalles")
+    if(titulo == "DameVino" || titulo == "DameVino - Recomendador")
         document.write("Dinos qué comes y te diremos qué beber");
     
-        if(titulo == "DameVino - Vinoteca")
+    if(titulo == "DameVino - Vinoteca")
         document.write("Encuentra tu vino preferido");
+
+    if(titulo == "DameVino - Detalles")
+        document.write("Detalles");
 
     if(titulo == "DameVino - Contacto")
         document.write("Contacto");
