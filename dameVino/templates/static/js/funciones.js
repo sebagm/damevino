@@ -62,6 +62,7 @@ function inicioRecomendador(){
     $("#colRV").empty();
     $("#colRV").append('<div id="cRV" class="col" align="center" style="overflow-y: auto; max-height: 350px;"></div>');
     $("#botonSiguiente").empty();
+    $("#navMigajas").append("<ol id='migajas' class='breadcrumb'></ol>");
     tipoVino();
 }
 
@@ -72,6 +73,40 @@ function tipoVino(){
     $("#tituloR").text("Tipo de vino");
     $("#cRV button").remove();
     $("#contenedorRVenviar input").remove();
+    
+    if(fin == false)
+    {
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>1. Tipo de vino</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>2. Denominación</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>3. Edad</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>4. Maridaje</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>5. Sabor</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>6. Textura</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>7. Cuerpo</li>");
+    }
+    else
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>1. Tipo de vino</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>6. Textura&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>7. Cuerpo&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    }
     
     for(var i=0; i<tVino.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+ tVino[i] +"' onclick = tipoVvalue(this);>"+tVino[i]+"</button>");
@@ -97,6 +132,41 @@ function tipoDenominacion(){
     $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
+    if(fin == false)
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>2. Denominación</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>3. Edad</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>4. Maridaje</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>5. Sabor</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>6. Textura</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>7. Cuerpo</li>");
+    }
+    else
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>2. Denominación</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>6. Textura&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>7. Cuerpo&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    }
+
     for(var i=0; i<tDenominacion.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tDenominacion[i]+"' onclick = tipoDvalue(this);>"+tDenominacion[i]+"</button>");
 
@@ -120,12 +190,45 @@ function tipoEdad(){
     $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
+    if(fin == false)
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>3. Edad</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>4. Maridaje</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>5. Sabor</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>6. Textura</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>7. Cuerpo</li>");
+    }
+    else
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>3. Edad</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>6. Textura&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>7. Cuerpo&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    }
+
     for(var i=0; i<tEdad.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tEdad[i]+"' onclick = tipoEvalue(this);>"+tEdad[i]+"</button>");
 
     $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoEvalue(this); style='width: 25%'>Saltar esta opción</button>");
-
-    
 }
 
 function tipoEvalue(comp){
@@ -144,6 +247,41 @@ function tipoMaridaje(){
     $("#cRV button").remove();
     $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
+
+    if(fin == false)
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>4. Maridaje</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>5. Sabor</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>6. Textura</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>7. Cuerpo</li>");
+    }
+    else
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>4. Maridaje</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>6. Textura&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>7. Cuerpo&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    }
 
     for(var i=0; i<tMaridaje.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tMaridaje[i]+"' onclick = tipoMvalue(this);>"+tMaridaje[i]+"</button>");
@@ -168,6 +306,41 @@ function tipoGusto(){
     $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
+    if(fin == false)
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>5. Sabor</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>6. Textura</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>7. Cuerpo</li>");
+    }
+    else
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>5. Sabor</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>6. Textura&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>7. Cuerpo&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    }
+
     for(var i=0; i<tGusto.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tGusto[i]+"' onclick = tipoGvalue(this);>"+tGusto[i]+"</button>");
 
@@ -190,6 +363,42 @@ function tipoTextura(){
     $("#cRV button").remove();
     $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
+
+    if(fin == false)
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>6. Textura</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item'>7. Cuerpo</li>");
+    }
+    else
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>6. Textura</li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>7. Cuerpo&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    }
+
 
     for(var i=0; i<tTextura.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tTextura[i]+"' onclick = tipoTvalue(this);>"+tTextura[i]+"</button>");
@@ -214,6 +423,41 @@ function tipoCuerpo(){
     $("#botonSiguiente button").remove();
     $("#contenedorRVenviar input").remove();
 
+    if(fin == false)
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>6. Textura&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>7. Cuerpo</li>");
+    }
+    else
+    {
+        $("#migajas").empty();
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagConf'>6. Textura&nbsp;<i class='far fa-check-circle icono'></i></li>");
+        $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+        $("#migajas").append("<li class='breadcrumb-item pagAct'>7. Cuerpo</li>");
+    }
+
     for(var i=0; i<tCuerpo.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tCuerpo[i]+"' onclick = tipoCvalue(this);>"+tCuerpo[i]+"</button>");
 
@@ -231,13 +475,30 @@ function resumen(){
     $("#botonSiguiente button").remove();
     $("#tituloR").text("Características seleccionadas");
     
-    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoVino();>Tipo de vino: "+tipoV+"</button>");
-    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoDenominacion();>Denominación: "+tipoD+"</button>");
-    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoEdad();> Edad: "+tipoE+"</button>");
-    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoMaridaje();>Maridaje: "+tipoM+"</button>");
-    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoGusto();>Sabor: "+tipoG+"</button>");
-    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoTextura();>Textura: "+tipoT+"</button>");
-    $("#cRV").append("<button class='btn opcionesRV' onclick = tipoCuerpo();>Cuerpo: "+tipoC+"</button>");
+    $("#migajas").empty();
+    $("#migajas").append("<li class='breadcrumb-item pagConf'>1. Tipo de vino&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+    $("#migajas").append("<li class='breadcrumb-item pagConf'>2. Denominación&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+    $("#migajas").append("<li class='breadcrumb-item pagConf'>3. Edad&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+    $("#migajas").append("<li class='breadcrumb-item pagConf'>4. Maridaje&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+    $("#migajas").append("<li class='breadcrumb-item pagConf'>5. Sabor&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+    $("#migajas").append("<li class='breadcrumb-item pagConf'>6. Textura&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+    $("#migajas").append("<li class='breadcrumb-item pagConf'>7. Cuerpo&nbsp;<i class='far fa-check-circle icono'></i></li>");
+    $("#migajas").append("<li><i class='fas fa-angle-right mx-3'></i></li>");
+    $("#migajas").append("<li class='breadcrumb-item pagAct'>Resumen</li>");
+    
+    $("#cRV").append("<button class='btn opcionesRV' data-toggle='tooltip' data-placement='top' title='Pincha para cambiar la elección' onclick = tipoVino();>Tipo de vino: "+tipoV+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' data-toggle='tooltip' data-placement='top' title='Pincha para cambiar la elección' onclick = tipoDenominacion();>Denominación: "+tipoD+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' data-toggle='tooltip' data-placement='top' title='Pincha para cambiar la elección' onclick = tipoEdad();> Edad: "+tipoE+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' data-toggle='tooltip' data-placement='top' title='Pincha para cambiar la elección' onclick = tipoMaridaje();>Maridaje: "+tipoM+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV'  data-toggle='tooltip' data-placement='top' title='Pincha para cambiar la elección'onclick = tipoGusto();>Sabor: "+tipoG+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' data-toggle='tooltip' data-placement='top' title='Pincha para cambiar la elección' onclick = tipoTextura();>Textura: "+tipoT+"</button>");
+    $("#cRV").append("<button class='btn opcionesRV' data-toggle='tooltip' data-placement='top' title='Pincha para cambiar la elección' onclick = tipoCuerpo();>Cuerpo: "+tipoC+"</button>");
     $("#contenedorRVenviar form").append("<input type='hidden' name='Vino' value='"+tipoV+"'>");
     $("#contenedorRVenviar form").append("<input type='hidden' name='Denom' value='"+tipoD+"'>");
     $("#contenedorRVenviar form").append("<input type='hidden' name='Edad' value='"+tipoE+"'>");

@@ -5,6 +5,9 @@
 {% block content %}
 
     <div class="container-fluid px-5 py-4" style="background-color: white;">
+        <nav id="navMigajas" aria-label="breadcrumb">
+            
+        </nav>
         <h1 id="tituloR"></h1>
         <div id="colRV" class="row px-5 py-5 justify-content-center" style="background-color: #a1ded6;">
 
@@ -35,8 +38,10 @@
                         if (n > 0)
                         {
                             $("#colRV").empty();
-                            $("#tituloR").html("Recomendación de DameVino");
                             $("#contenedorRVenviar form").empty();
+                            $("#navMigajas").empty();
+                            $("#tituloR").html("Recomendación de DameVino");
+
                             for(var i = 0; i<n; i++)
                             {
                                 var vId = data[i].id;
