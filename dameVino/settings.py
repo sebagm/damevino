@@ -127,7 +127,7 @@ STATICFILES_DIRS = [
 ] """
 
 PROJECT_ROOT = '/dameVino/'
-STATIC_ROOT = '/dameVino/templates/static'
+STATIC_ROOT = '/dameVino/templates/static/'
 STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
