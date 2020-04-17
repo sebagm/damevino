@@ -7,6 +7,7 @@ import json
 import gestionVinos.ContendBased as CB
 import pandas as pd
 import sqlite3
+from django.core.mail import EmailMessage
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def inicio(request):
     return render(request, "inicio.html")
 
 def recomendador(request):
-    return render(request, "recomendador.html", {"rec":rec})
+    return render(request, "recomendador.html")
 
 
 def vinoteca(request):
@@ -24,6 +25,7 @@ def vinoteca(request):
 
 def detalles(request, idVino):
     v = Vinos.objects.get(id=idVino)
+
     return render(request, "detalles.html", {"v":v})
 
 def contacto(request):
@@ -31,7 +33,16 @@ def contacto(request):
 
 def envioCorreo(request):
     #Envío de correo
-    return HttpResponse();
+    nombre = request.GET["nombre"]
+    correo = request.GET["correo"]
+    mensaje = request.GET["msg"]
+
+    asunto = nombre + " (" + correo + ")"
+
+    mail = EmailMessage(asunto, mensaje, to=['damevinotfg@gmail.com'])
+    mail.send()
+
+    return HttpResponse()
 
 def formRecomendador(request):
     conn = sqlite3.connect("db.sqlite3")
