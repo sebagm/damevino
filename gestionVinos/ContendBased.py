@@ -1,6 +1,6 @@
 import pandas as pd
 import nltk
-#nltk.download('stopwords')
+nltk.download('stopwords')
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 from nltk.corpus import stopwords
