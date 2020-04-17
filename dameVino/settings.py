@@ -126,13 +126,12 @@ STATICFILES_DIRS = [
     'dameVino/templates/static',
 ] """
 
-PROJECT_ROOT = '/dameVino/'
-STATIC_ROOT = '/dameVino/templates/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-# Extra lookup directories for collectstatic to find static files
+# Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 #  Add configuration for static files storage using whitenoise
