@@ -1,0 +1,1 @@
+web: gunicorn dameVino.wsgi --log-file -
