@@ -34,8 +34,24 @@ function enviar(){
             
             if(regex.test(correo)){
                 if(msg != ""){
-                    $("#contenedor").html("<p class='d-flex justify-content-center'><b>Tu mensaje ha sido enviado correctamente</b></p>")
-                    $("#contenedor").append("<div class='col d-flex justify-content-center'><a class='btn boton mt-4' href=\"/inicio/\" style='margin-right: 5px;'><b>DameVino</b></a><a class='btn boton mt-4' href=\"/contacto/\" style='margin-left: 5px'><b>Contacto</b></a></div>")
+                    $.get("../envioCorreo/", {"nombre": nombre, "correo": correo, "msg": msg}, function(){
+                        $("#contenedor").empty();
+                        var html = "";
+                        var html2 = "";
+                        html += "<div id='colC' class='row justify-content-center py-4' style='background-color: #a1ded6;'>"
+                                    +"<div class='col-lg-8 col-xs-10'>"
+                                        +"<h4 id='tituloC'>Tu mensaje ha sido enviado correctamente</h4"
+                                    +"</div"
+                                +"</div>"
+                        
+                        html2 += "<div class='row justify-content-center pt-3'>" 
+                                    +"<a class='btn boton mt-4' href=\"/inicio/\" style='margin-right: 5px;'><b>DameVino</b></a>"
+                                    +"<a class='btn boton mt-4' href=\"/contacto/\" style='margin-left: 5px'><b>Contacto</b></a>"
+                                +"</div"
+
+                        $("#contenedor").append(html);
+                        $("#contenedor").append(html2);
+                    });
                 }
                 else
                     $("#group3").append("<p id='advertencia' style='color: #762933'><b>Este campo no puede estar vacío</b></p>")

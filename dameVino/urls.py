@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from gestionVinos.views import inicio, recomendador, vinoteca, detalles, contacto, formRecomendador, filtroVinoteca
+from gestionVinos.views import inicio, recomendador, vinoteca, detalles, contacto, formRecomendador, filtroVinoteca, envioCorreo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
     path('contacto/', contacto, name="contacto"),
     path('formRecomendador/', formRecomendador, name="formRecomendador"),
     path('filtroVinoteca/', filtroVinoteca, name="filtroVinoteca"),
+    path('envioCorreo/', envioCorreo, name="envioCorreo"),
 ]

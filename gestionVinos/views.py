@@ -14,7 +14,6 @@ def inicio(request):
     return render(request, "inicio.html")
 
 def recomendador(request):
-    rec = False
     return render(request, "recomendador.html", {"rec":rec})
 
 
@@ -30,9 +29,11 @@ def detalles(request, idVino):
 def contacto(request):
     return render(request, "contacto.html")
 
-def formRecomendador(request):
-    rec = True
+def envioCorreo(request):
+    #Envío de correo
+    return HttpResponse();
 
+def formRecomendador(request):
     conn = sqlite3.connect("db.sqlite3")
     datos = pd.read_sql_query("SELECT * FROM gestionVinos_vinos;", conn)
 
