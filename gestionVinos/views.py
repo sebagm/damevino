@@ -31,8 +31,7 @@ def detalles(request, idVino):
     #v = Vinos.objects.get(id=idVino)
     query = "SELECT * FROM gestionVinos_vinos WHERE id = "+ idVino +";"
     conn = sqlite3.connect("db.sqlite3")
-    vino = pd.read_sql_query(query, conn)
-    v = vino_serializer2(vino)
+    v = vino_serializer2(pd.read_sql_query(query, conn))
     conn.close()
 
     return render(request, "detalles.html", {"v":v})
