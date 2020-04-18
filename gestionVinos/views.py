@@ -19,14 +19,16 @@ def recomendador(request):
 
 
 def vinoteca(request):
-    vinos = Vinos.objects.all()
+    #vinos = Vinos.objects.all()
+    conn = sqlite3.connect("db.sqlite3")
+    vinos = pd.read_sql_query("SELECT * FROM gestionVinos_vinos;", conn)
 
     return render(request, "vinoteca.html", {"vinos":vinos})
 
 def detalles(request, idVino):
     #v = Vinos.objects.get(id=idVino)
     conn = sqlite3.connect("db.sqlite3")
-    v = pd.read_sql_query("SELECT * FROM gestionVinos_vinos;", conn)
+    v = pd.read_sql_query("SELECT * FROM gestionVinos_vinos where id" + idVino + ";", conn)
 
     return render(request, "detalles.html", {"v":v})
 
