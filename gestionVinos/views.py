@@ -32,7 +32,7 @@ def detalles(request, idVino):
     conn = sqlite3.connect("db.sqlite3")
     query = "SELECT * FROM gestionVinos_vinos where id=" + str(idVino) + ";"
     vinos = pd.read_sql_query(query, conn)
-    v = [vino_serializer2(vino) for vino in vinos.iterrows()]
+    v = [vino_serializer(vino) for vino in vinos.iterrows()]
     conn.close()
 
     return render(request, "detalles.html", {"v":v})
@@ -211,7 +211,7 @@ def filtroVinoteca(request):
     vinos = pd.read_sql_query(query, conn)
     vinos = [vino_serializer(vino) for vino in vinos.iterrows()]
     conn.close()
-    
+
     return HttpResponse(json.dumps(vinos), content_type='application/json')
 
 def vino_serializer(vino):
