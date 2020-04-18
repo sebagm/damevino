@@ -32,6 +32,7 @@ def detalles(request, idVino):
     query = "SELECT * FROM gestionVinos_vinos WHERE id = "+ idVino +";"
     conn = sqlite3.connect("db.sqlite3")
     vino = pd.read_sql_query(query, conn)
+    del vino['Unnamed: 0']
     v = [vino_serializer2(vino)]
     conn.close()
 
