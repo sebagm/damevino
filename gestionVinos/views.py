@@ -186,7 +186,7 @@ def filtroVinoteca(request):
         dOrigen = do.split(', ')
         ndO = len(dOrigen)
         for dorig in range(ndO-1):
-            query += "denominacion = '" + dOrigen[dorig] + "'"
+            query += "denominacion LIKE '%" + dOrigen[dorig] + "%'"
             if dorig < ndO-2:
                 query += " OR "
         query += ") AND ("

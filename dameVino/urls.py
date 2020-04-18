@@ -18,6 +18,7 @@ from django.urls import path
 from gestionVinos.views import inicio, recomendador, vinoteca, detalles, contacto, formRecomendador, filtroVinoteca, envioCorreo
 
 urlpatterns = [
+    path('', inicio, name="inicio"),
     path('admin/', admin.site.urls),
     path('inicio/', inicio, name="inicio"),
     path('recomendador/', recomendador, name="recomendador"),
