@@ -127,7 +127,7 @@ function tipoVino(){
     for(var i=0; i<tVino.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+ tVino[i] +"' onclick = tipoVvalue(this);>"+tVino[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoVvalue(this); style='width: 25%'><b>Saltar esta opción</b></button>");
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoVvalue(this);><b>Saltar opción</b></button>");
 }
 
 // Función para obtener el value de la opción escogida por el usuario
@@ -186,7 +186,7 @@ function tipoDenominacion(){
     for(var i=0; i<tDenominacion.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tDenominacion[i]+"' onclick = tipoDvalue(this);>"+tDenominacion[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoDvalue(this); style='width: 25%'><b>Saltar esta opción</b></button>");        
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoDvalue(this);><b>Saltar opción</b></button>");        
 }
 
 function tipoDvalue(comp){
@@ -244,7 +244,7 @@ function tipoEdad(){
     for(var i=0; i<tEdad.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tEdad[i]+"' onclick = tipoEvalue(this);>"+tEdad[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoEvalue(this); style='width: 25%'>Saltar esta opción</button>");
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoEvalue(this);>Saltar opción</button>");
 }
 
 function tipoEvalue(comp){
@@ -302,7 +302,7 @@ function tipoMaridaje(){
     for(var i=0; i<tMaridaje.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tMaridaje[i]+"' onclick = tipoMvalue(this);>"+tMaridaje[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoMvalue(this); style='width: 25%'>Saltar esta opción</button>");        
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoMvalue(this);>Saltar opción</button>");        
 }
 
 function tipoMvalue(comp){
@@ -360,7 +360,7 @@ function tipoGusto(){
     for(var i=0; i<tGusto.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tGusto[i]+"' onclick = tipoGvalue(this);>"+tGusto[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoGvalue(this); style='width: 25%'>Saltar esta opción</button>");        
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoGvalue(this);>Saltar opción</button>");        
 }
 
 function tipoGvalue(comp){
@@ -419,7 +419,7 @@ function tipoTextura(){
     for(var i=0; i<tTextura.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tTextura[i]+"' onclick = tipoTvalue(this);>"+tTextura[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoTvalue(this); style='width: 25%'>Saltar esta opción</button>");
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoTvalue(this);>Saltar opción</button>");
 }
 
 function tipoTvalue(comp){
@@ -477,7 +477,7 @@ function tipoCuerpo(){
     for(var i=0; i<tCuerpo.length; i++)
         $("#cRV").append("<button class='btn opcionesRV' value='"+tCuerpo[i]+"' onclick = tipoCvalue(this);>"+tCuerpo[i]+"</button>");
 
-    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoCvalue(this); style='width: 25%'>Saltar esta opción</button>");        
+    $("#botonSiguiente").append("<button class='btn boton' value='Sin elección' onclick = tipoCvalue(this);>Saltar opción</button>");        
 }
 
 function tipoCvalue(comp){
