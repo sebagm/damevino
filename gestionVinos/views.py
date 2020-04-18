@@ -29,7 +29,7 @@ def vinoteca(request):
 
 def detalles(request, idVino):
     #v = Vinos.objects.get(id=idVino)
-    query = "SELECT * FROM gestionVinos_vinos;"
+    query = "SELECT * FROM gestionVinos_vinos WHERE id = "+ idVino +";"
     conn = sqlite3.connect("db.sqlite3")
     vinos = pd.read_sql_query(query, conn)
     v = [vino_serializer2(vino) for vino in vinos.iterrows()]
