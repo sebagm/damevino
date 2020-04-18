@@ -14,7 +14,7 @@ def inicio(request):
     return render(request, "inicio.html")
 
 def recomendador(request):
-    return render(request, "recomendador.html", {"rec":rec})
+    return render(request, "recomendador.html")
 
 
 def vinoteca(request):
