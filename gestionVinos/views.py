@@ -29,10 +29,10 @@ def vinoteca(request):
 
 def detalles(request, idVino):
     #v = Vinos.objects.get(id=idVino)
-    query = "SELECT * FROM gestionVinos_vinos WHERE nombre LIKE '%Manzanilla Pastrana (Pasada)%';"
+    query = "SELECT * FROM gestionVinos_vinos;"
     conn = sqlite3.connect("db.sqlite3")
     vinos = pd.read_sql_query(query, conn)
-    v = [vino_serializer(vino) for vino in vinos.iterrows()]
+    v = [vino_serializer2(vino) for vino in vinos.iterrows()]
     conn.close()
 
     return render(request, "detalles.html", {"v":v})
