@@ -22,7 +22,7 @@ def vinoteca(request):
     #vinos = Vinos.objects.all()
     conn = sqlite3.connect("db.sqlite3")
     v = pd.read_sql_query("SELECT * FROM gestionVinos_vinos;", conn)
-    vinos = [vino_serializer2(vino) for vino in v.iterrows()]
+    vinos = [vino_serializer(vino) for vino in v.iterrows()]
     
     return render(request, "vinoteca.html", {"vinos":vinos})
 
@@ -30,7 +30,8 @@ def detalles(request, idVino):
     #v = Vinos.objects.get(id=idVino)
     conn = sqlite3.connect("db.sqlite3")
     query = "SELECT * FROM gestionVinos_vinos where id = " + str(idVino) + ";"
-    v = pd.read_sql_query(query, conn)
+    vinos = pd.read_sql_query(query, conn)
+    v = [vino_serializer2(vino) for vino in vinos.iterrows()]
 
     return render(request, "detalles.html", {"v":v})
 
@@ -161,18 +162,8 @@ def formRecomendador(request):
     vinos_pd = cb.predict([cadena])
     del vinos_pd['prediccion']
 
-    vinos = [vino_serializer2(vino) for vino in vinos_pd.iterrows()]
+    vinos = [vino_serializer(vino) for vino in vinos_pd.iterrows()]
     return HttpResponse(json.dumps(vinos), content_type='application/json')
-
-def vino_serializer2(vino):
-    """print(vino[0])
-    print("ESTO QUE ES")
-    print(vino[1].id)
-    print(vino[1].nombre)
-    print(vino[1].tipo)
-    print(vino[1].denominacion)
-    print(vino[1].img)"""
-    return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'denominacion':vino[1].denominacion, 'img':vino[1].img, 'url':vino[1].url}
 
 def filtroVinoteca(request):
     query = "SELECT * FROM gestionVinos_vinos WHERE ("
@@ -215,8 +206,11 @@ def filtroVinoteca(request):
     #vinos = Vinos.objects.raw(query)
     conn = sqlite3.connect("db.sqlite3")
     vinos = pd.read_sql_query(query, conn)
-    vinos = [vino_serializer2(vino) for vino in vinos.iterrows()]
+    vinos = [vino_serializer(vino) for vino in vinos.iterrows()]
     return HttpResponse(json.dumps(vinos), content_type='application/json')
 
 def vino_serializer(vino):
-    return {'id':vino.id, 'nombre':vino.nombre, 'tipo':vino.tipo, 'denominacion':vino.denominacion, 'img':vino.img, 'url':vino.url}
+    return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'denominacion':vino[1].denominacion, 'img':vino[1].url_img, 'url':vino[1].url}
+
+def vino_serializer2(vino):
+    return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'anada': vino[1].anada, 'denominacion':vino[1].denominacion, 'bodega':vino[1].bodega, 'puntos':vino[1].puntos, 'maridaje':vino[1].maridaje, 'vista'::vino[1].vista, 'nariz':vino[1].nariz, 'boca':vino[1].boca, 'img':vino[1].url_img, 'url':vino[1].url}
