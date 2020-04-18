@@ -170,6 +170,7 @@ def vino_serializer2(vino):
 
 def filtroVinoteca(request):
     
+    conn = sqlite3.connect("db.sqlite3")
     query = "SELECT * FROM gestionVinos_vinos WHERE ("
     
     t = request.GET['fDivTipo']
@@ -203,11 +204,12 @@ def filtroVinoteca(request):
         query += ") AND ("
 
     p = request.GET['fPuntuacion']
-    query += "puntos <= " + p + ")"
+    query += "puntos <= " + p + ");"
 
     print(query)
     
-    vinos = Vinos.objects.raw(query)
+    #vinos = Vinos.objects.raw(query)
+    vinos = pd.read_sql_query(query, conn)
     vinos = [vino_serializer(vino) for vino in vinos]
     return HttpResponse(json.dumps(vinos), content_type='application/json')
 
