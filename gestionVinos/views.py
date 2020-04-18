@@ -210,7 +210,7 @@ def filtroVinoteca(request):
     
     #vinos = Vinos.objects.raw(query)
     vinos = pd.read_sql_query(query, conn)
-    vinos = [vino_serializer(vino) for vino in vinos]
+    vinos = [vino_serializer2(vino) for vino in vinos_pd.iterrows()]
     return HttpResponse(json.dumps(vinos), content_type='application/json')
 
 def vino_serializer(vino):
