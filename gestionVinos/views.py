@@ -213,4 +213,4 @@ def vino_serializer(vino):
     return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'denominacion':vino[1].denominacion, 'img':vino[1].url_img, 'url':vino[1].url}
 
 def vino_serializer2(vino):
-    return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'anada': vino[1].anada, 'denominacion':vino[1].denominacion, 'bodega':vino[1].bodega, 'puntos':vino[1].puntos, 'maridaje':vino[1].maridaje, 'vista'::vino[1].vista, 'nariz':vino[1].nariz, 'boca':vino[1].boca, 'img':vino[1].url_img, 'url':vino[1].url}
+    return {'id':vino[1].id, 'nombre':vino[1].nombre, 'tipo':vino[1].tipo, 'anada': vino[1].anada, 'denominacion':vino[1].denominacion, 'bodega':vino[1].bodega, 'puntos':vino[1].puntos, 'maridaje':vino[1].maridaje, 'vista':vino[1].vista, 'nariz':vino[1].nariz, 'boca':vino[1].boca, 'img':vino[1].url_img, 'url':vino[1].url}
