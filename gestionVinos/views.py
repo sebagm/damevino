@@ -22,15 +22,16 @@ def vinoteca(request):
     #vinos = Vinos.objects.all()
     conn = sqlite3.connect("db.sqlite3")
     v = pd.read_sql_query("SELECT * FROM gestionVinos_vinos;", conn)
-
     vinos = [vino_serializer2(vino) for vino in v.iterrows()]
+    
     return render(request, "vinoteca.html", {"vinos":vinos})
 
 def detalles(request, idVino):
     #v = Vinos.objects.get(id=idVino)
     conn = sqlite3.connect("db.sqlite3")
-    query = "SELECT * FROM gestionVinos_vinos where id" + str(idVino) + ";"
-    v = pd.read_sql_query(query, conn)
+    query = "SELECT * FROM gestionVinos_vinos where id = " + str(idVino) + ";"
+    vinos = pd.read_sql_query(query, conn)
+    v = [vino_serializer2(vino) for vino in vinos.iterrows()]
 
     return render(request, "detalles.html", {"v":v})
 
